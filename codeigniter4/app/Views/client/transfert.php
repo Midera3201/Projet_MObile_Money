@@ -10,11 +10,12 @@
                 <?php if (session()->getFlashdata("error")): ?><div class="alert alert-danger"><?= session()->getFlashdata("error") ?></div><?php endif; ?>
                 <form method="post" action="/client/transfert">
                     <div class="mb-3">
-                        <label for="destinataire" class="form-label">Destinataire</label>
-                        <input type="text" class="form-control form-control-lg text-center" id="destinataire" name="destinataire" placeholder="033 00 000 00" required maxlength="10">
+                        <label for="destinataires" class="form-label">Destinataire(s)</label>
+                        <textarea class="form-control form-control-lg text-center" id="destinataires" name="destinataires" rows="3" placeholder="033 00 000 00&#10;037 00 000 00" required></textarea>
+                        <div class="form-text">Un numéro par ligne. L'envoi se fera à chaque destinataire.</div>
                     </div>
                     <div class="mb-3">
-                        <label for="montant" class="form-label">Montant (Ar)</label>
+                        <label for="montant" class="form-label">Montant par destinataire (Ar)</label>
                         <input type="number" class="form-control form-control-lg text-center" id="montant" name="montant" min="100" step="100" placeholder="100" required>
                         <div class="form-text">Des frais de transfert s'appliquent selon le montant.</div>
                     </div>
