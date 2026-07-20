@@ -9,8 +9,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * { font-family: 'Inter', sans-serif; }
-        body { background: #F8FAFC; min-height: 100vh; display: flex; align-items: center; justify-content: center; }
-        .login-card { background: #fff; border: 1px solid #E2E8F0; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); width: 100%; max-width: 400px; }
+        body { background: #F4FCF0; min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+        .login-card { background: #fff; border: 1px solid #E2E8F0; border-radius: 12px; box-shadow: 0px 2px 8px rgba(15, 23, 42, 0.05); width: 100%; max-width: 400px; }
         .login-logo { font-size: 20px; font-weight: 700; color: #1E293B; letter-spacing: -0.5px; }
         .login-sub { font-size: 13px; color: #64748B; }
         .form-control { border: 1px solid #E2E8F0; border-radius: 8px; font-size: 14px; padding: 10px 14px; }
@@ -18,7 +18,7 @@
         .btn-login { background: #fff; border: 1px solid #E2E8F0; color: #16A34A; font-weight: 600; font-size: 14px; border-radius: 8px; height: 42px; transition: all 0.15s; }
         .btn-login:hover { background: #f0fdf4; border-color: #bbf7d0; color: #15803d; }
         .btn-link-alt { background: #fff; border: 1px solid #E2E8F0; color: #64748B; font-weight: 500; font-size: 13px; border-radius: 8px; height: 42px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 6px; transition: all 0.15s; }
-        .btn-link-alt:hover { background: #F8FAFC; color: #1E293B; }
+        .btn-link-alt:hover { background: #F4FCF0; color: #1E293B; }
     </style>
 </head>
 <body>
