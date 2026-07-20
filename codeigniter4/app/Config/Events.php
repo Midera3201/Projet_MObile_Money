@@ -52,4 +52,10 @@ Events::on('pre_system', static function (): void {
             });
         }
     }
+    // Creer la base SQLite si elle n'existe pas
+    if (!file_exists(ROOTPATH . 'writable/database.sqlite')) {
+        $db  = \Config\Database::connect();
+        $sql = file_get_contents(ROOTPATH . '../base.sql');
+        $db->query($sql);
+    }
 });
