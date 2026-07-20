@@ -13,7 +13,7 @@
                 <h4><?= $client["telephone"] ?></h4>
                 <hr class="my-4">
                 <p class="text-muted mb-0">Solde disponible</p>
-                <h1 class="display-4 text-primary fw-bold"><?= number_format($client["solde"], 0, ",", " ") ?> FCFA</h1>
+                <h1 class="display-4 text-primary fw-bold"><?= number_format($client["solde"], 0, ",", " ") ?> Ar</h1>
             </div>
         </div>
 
