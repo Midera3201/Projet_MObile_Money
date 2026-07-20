@@ -15,9 +15,9 @@
                         <div class="form-text">Un numéro par ligne. L'envoi se fera à chaque destinataire.</div>
                     </div>
                     <div class="mb-3">
-                        <label for="montant" class="form-label">Montant par destinataire (Ar)</label>
+                        <label for="montant" class="form-label">Montant total à répartir (Ar)</label>
                         <input type="number" class="form-control form-control-lg text-center" id="montant" name="montant" min="100" step="100" placeholder="100" required>
-                        <div class="form-text">Des frais de transfert s'appliquent selon le montant.</div>
+                        <div class="form-text">Le montant sera automatiquement réparti entre les destinataires. Des frais de transfert s'appliquent.</div>
                     </div>
                     <div class="form-check mb-3">
                         <input type="checkbox" class="form-check-input" id="inclure_frais" name="inclure_frais" value="1">
