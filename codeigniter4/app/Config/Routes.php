@@ -42,6 +42,10 @@ $routes->group('admin', ['filter' => 'adminAuth'], function ($routes) {
     $routes->post('operateurs/create', 'Admin\OperateurExterneController::create');
     $routes->get('operateurs/toggle/(:num)', 'Admin\OperateurExterneController::toggle/$1');
     $routes->get('operateurs/delete/(:num)', 'Admin\OperateurExterneController::delete/$1');
+
+    // Commissions
+    $routes->get('commissions', 'Admin\CommissionController::index');
+    $routes->post('commissions/update/(:num)', 'Admin\CommissionController::update/$1');
 });
 
 $routes->get('/login', 'ClientController::login');
