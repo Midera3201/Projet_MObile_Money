@@ -35,5 +35,5 @@ class ClientController extends BaseController
     public function logout()
     {
         $this->session->remove('user');
- main
+
 }

@@ -16,7 +16,15 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <?php if (session()->has('user')): ?>
-
+                    <li class="nav-item">
+                        <a class="nav-link" href="/client/dashboard">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/client/historique">Historique</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">Déconnexion</a>
+                    </li>
                 <?php endif; ?>
             </ul>
         </div>

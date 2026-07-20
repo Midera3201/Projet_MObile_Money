@@ -1,6 +1,8 @@
 <?php
 namespace App\Models;
-n
+
+use CodeIgniter\Model;
+
 class ClientModel extends Model
 {
     protected $table = 'clients';
