@@ -114,22 +114,35 @@ class ClientController extends BaseController
         if (!$this->isLoggedIn()) return redirect()->to("/login");
         $destinataire = trim($this->request->getPost("destinataire"));
         $montant = (float) $this->request->getPost("montant");
+        $inclureFrais = $this->request->getPost("inclure_frais") ? true : false;
+
         if ($montant <= 0) return redirect()->back()->with("error", "Montant invalide.");
         if ($destinataire === $this->currentUser["telephone"]) return redirect()->back()->with("error", "Transfert à soi-même interdit.");
         $destClient = $this->clientModel->where("telephone", $destinataire)->first();
         if (!$destClient) return redirect()->back()->with("error", "Destinataire introuvable.");
-        $frais = $this->calculerFrais("transfert", $montant);
-        $total = $montant + $frais;
+
+        $fraisTransfert = $this->calculerFrais("transfert", $montant);
+        $fraisRetrait = 0;
+        if ($inclureFrais) {
+            $fraisRetrait = $this->calculerFrais("retrait", $montant);
+        }
+        $totalFrais = $fraisTransfert + $fraisRetrait;
+        $total = $montant + $totalFrais;
+
         $client = $this->clientModel->find($this->currentUser["id"]);
         if ($client["solde"] < $total) return redirect()->back()->with("error", "Solde insuffisant.");
+
         $db = \Config\Database::connect();
         $db->transStart();
-        $this->transactionModel->insert(["id_client" => $client["id"], "type_operation" => "transfert", "montant" => $montant, "frais" => $frais, "montant_total" => $total, "destinataire" => $destinataire]);
+        $this->transactionModel->insert(["id_client" => $client["id"], "type_operation" => "transfert", "montant" => $montant, "frais" => $totalFrais, "montant_total" => $total, "destinataire" => $destinataire]);
         $this->clientModel->update($client["id"], ["solde" => $client["solde"] - $total]);
         $this->clientModel->update($destClient["id"], ["solde" => $destClient["solde"] + $montant]);
         $db->transComplete();
         if ($db->transStatus() === false) return redirect()->back()->with("error", "Erreur lors du transfert.");
-        return redirect()->to("/client/dashboard")->with("success", "Transfert de " . number_format($montant, 0, ",", " ") . " Ar vers " . $destinataire . " effectué (frais: " . number_format($frais, 0, ",", " ") . " Ar).");
+
+        $msg = "Transfert de " . number_format($montant, 0, ",", " ") . " Ar vers " . $destinataire . " effectué (frais: " . number_format($fraisTransfert, 0, ",", " ") . " Ar)";
+        if ($inclureFrais) $msg .= " - frais de retrait inclus: " . number_format($fraisRetrait, 0, ",", " ") . " Ar";
+        return redirect()->to("/client/dashboard")->with("success", $msg . ".");
     }
 
     public function historique()

@@ -18,6 +18,10 @@
                         <input type="number" class="form-control form-control-lg text-center" id="montant" name="montant" min="100" step="100" placeholder="100" required>
                         <div class="form-text">Des frais de transfert s'appliquent selon le montant.</div>
                     </div>
+                    <div class="form-check mb-3">
+                        <input type="checkbox" class="form-check-input" id="inclure_frais" name="inclure_frais" value="1">
+                        <label class="form-check-label" for="inclure_frais">Inclure les frais de retrait du destinataire</label>
+                    </div>
                     <button type="submit" class="btn btn-info text-white btn-lg w-100">Transférer</button>
                     <a href="/client/dashboard" class="btn btn-outline-secondary w-100 mt-2">Annuler</a>
                 </form>
