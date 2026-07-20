@@ -22,6 +22,7 @@
             <li class="nav-item"><a class="nav-link" href="/admin/prefixes">Préfixes</a></li>
             <li class="nav-item"><a class="nav-link" href="/admin/types">Types d'opérations</a></li>
             <li class="nav-item"><a class="nav-link" href="/admin/baremes">Barèmes</a></li>
+            <li class="nav-item"><a class="nav-link" href="/admin/operateurs">Opérateurs externes</a></li>
             <li class="nav-item mt-4"><a class="nav-link text-danger" href="/admin/logout">Déconnexion</a></li>
         </ul>
     </div>
