@@ -1,46 +1,50 @@
 <?php if (session()->getFlashdata("success")): ?>
-    <div class="alert alert-success alert-dismissible fade show shadow-sm"><?= session()->getFlashdata("success") ?><button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>
+    <div class="alert-custom success"><i class="bi bi-check-circle"></i> <?= session()->getFlashdata("success") ?></div>
 <?php endif; ?>
 <?php if (session()->getFlashdata("error")): ?>
-    <div class="alert alert-danger alert-dismissible fade show shadow-sm"><?= session()->getFlashdata("error") ?><button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>
+    <div class="alert-custom error"><i class="bi bi-exclamation-circle"></i> <?= session()->getFlashdata("error") ?></div>
 <?php endif; ?>
 
-<div class="row">
-    <div class="col-lg-6 mx-auto">
-        <div class="card text-center">
-            <div class="card-body p-5">
-                <p class="text-muted mb-0 small text-uppercase tracking-wide">Bienvenue</p>
-                <h4 class="fw-bold mt-1"><?= $client["telephone"] ?></h4>
-                <hr class="my-4 opacity-25">
-                <p class="text-muted mb-0 small text-uppercase tracking-wide">Solde disponible</p>
-                <h1 class="display-4 text-primary fw-bold mb-0"><?= number_format($client["solde"], 0, ",", " ") ?> <small class="fs-5 text-muted">Ar</small></h1>
-            </div>
-        </div>
+<div class="stat-card mb-4 text-center">
+    <div style="font-size:12px;color:var(--text-light);text-transform:uppercase;letter-spacing:0.3px;font-weight:500;">Solde disponible</div>
+    <div style="font-size:32px;font-weight:700;color:var(--primary);margin-top:4px;">
+        <?= number_format($client["solde"], 0, ",", " ") ?> <span style="font-size:16px;color:var(--text-light);font-weight:500;">Ar</span>
+    </div>
+    <div style="font-size:13px;color:var(--text-light);margin-top:4px;"><?= htmlspecialchars($client["telephone"]) ?></div>
+</div>
 
-        <div class="row mt-4 g-3">
-            <div class="col-4">
-                <a href="/client/depot" class="btn btn-success btn-action btn-lg w-100 py-4 shadow-sm">
-                    <i class="bi bi-plus-circle fs-2 d-block mb-2"></i>
-                    <span class="fw-bold">Dépôt</span>
-                </a>
+<div class="row g-3 mb-4">
+    <div class="col-md-4">
+        <a href="/client/depot" class="card-custom d-block text-decoration-none" style="cursor:pointer;">
+            <div class="card-body-custom text-center py-4">
+                <div style="width:40px;height:40px;border-radius:10px;background:#f0fdf4;color:#16A34A;display:inline-flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:8px;">
+                    <i class="bi bi-plus-circle"></i>
+                </div>
+                <div style="font-weight:600;font-size:14px;color:var(--text);">Dépôt</div>
+                <div style="font-size:12px;color:var(--text-light);">Ajouter de l'argent</div>
             </div>
-            <div class="col-4">
-                <a href="/client/retrait" class="btn btn-warning btn-action btn-lg w-100 py-4 shadow-sm">
-                    <i class="bi bi-dash-circle fs-2 d-block mb-2"></i>
-                    <span class="fw-bold">Retrait</span>
-                </a>
+        </a>
+    </div>
+    <div class="col-md-4">
+        <a href="/client/retrait" class="card-custom d-block text-decoration-none" style="cursor:pointer;">
+            <div class="card-body-custom text-center py-4">
+                <div style="width:40px;height:40px;border-radius:10px;background:#fff7ed;color:#EA580C;display:inline-flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:8px;">
+                    <i class="bi bi-dash-circle"></i>
+                </div>
+                <div style="font-weight:600;font-size:14px;color:var(--text);">Retrait</div>
+                <div style="font-size:12px;color:var(--text-light);">Retirer de l'argent</div>
             </div>
-            <div class="col-4">
-                <a href="/client/transfert" class="btn btn-info text-white btn-action btn-lg w-100 py-4 shadow-sm">
-                    <i class="bi bi-send fs-2 d-block mb-2"></i>
-                    <span class="fw-bold">Transfert</span>
-                </a>
+        </a>
+    </div>
+    <div class="col-md-4">
+        <a href="/client/transfert" class="card-custom d-block text-decoration-none" style="cursor:pointer;">
+            <div class="card-body-custom text-center py-4">
+                <div style="width:40px;height:40px;border-radius:10px;background:#eff6ff;color:#2563EB;display:inline-flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:8px;">
+                    <i class="bi bi-send"></i>
+                </div>
+                <div style="font-weight:600;font-size:14px;color:var(--text);">Transfert</div>
+                <div style="font-size:12px;color:var(--text-light);">Envoyer de l'argent</div>
             </div>
-        </div>
-
-        <div class="text-center mt-4">
-            <a href="/client/historique" class="btn btn-outline-primary rounded-pill px-4"><i class="bi bi-clock-history me-1"></i>Voir l'historique</a>
-            <a href="/admin/login" class="btn btn-outline-secondary rounded-pill px-4 ms-2"><i class="bi bi-shield-lock me-1"></i>Administration</a>
-        </div>
+        </a>
     </div>
 </div>
