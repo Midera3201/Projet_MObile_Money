@@ -119,4 +119,202 @@ in SYSTEMPATH\Database\BaseConnection.php on line 606.
  9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
 10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
 11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+<<<<<<< Updated upstream
 12 SYSTEMPATH\rewrite.php(44): require_once('E:\\S4\\Mr rojo\\Projet_MObile_Money\\codeigniter4\\public\\index.php')
+=======
+12 FCPATH\router.php(6): require('E:\\S4\\Mr rojo\\Projet_MObile_Money\\codeigniter4\\public\\index.php')
+DEBUG - 2026-07-20 08:40:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-07-20 08:40:57 --> Error connecting to the database: Exception: Unable to open database: unable to open database file in E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\system\Database\SQLite3\Connection.php:111
+Stack trace:
+#0 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\system\Database\SQLite3\Connection.php(111): SQLite3->__construct('E:\\S4\\Mr rojo\\P...')
+#1 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\system\Database\BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect(false)
+#2 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\system\Database\SQLite3\Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#3 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\system\Database\BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+#4 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\system\Database\BaseConnection.php(1706): CodeIgniter\Database\BaseConnection->query('SELECT "NAME" F...')
+#5 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\app\Controllers\ClientController.php(23): CodeIgniter\Database\BaseConnection->listTables()
+#6 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\app\Controllers\ClientController.php(17): App\Controllers\ClientController->initDatabase()
+#7 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\system\CodeIgniter.php(922): App\Controllers\ClientController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+#8 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\system\CodeIgniter.php(488): CodeIgniter\CodeIgniter->createController()
+#9 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\system\Boot.php(417): CodeIgniter\CodeIgniter->run()
+#11 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\public\router.php(14): require('E:\\S4\\Mr rojo\\P...')
+#14 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: SQLite3 error: Unable to open database: unable to open database file in E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\system\Database\SQLite3\Connection.php:118
+Stack trace:
+#0 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\system\Database\BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect(false)
+#1 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\system\Database\SQLite3\Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#2 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\system\Database\BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+#3 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\system\Database\BaseConnection.php(1706): CodeIgniter\Database\BaseConnection->query('SELECT "NAME" F...')
+#4 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\app\Controllers\ClientController.php(23): CodeIgniter\Database\BaseConnection->listTables()
+#5 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\app\Controllers\ClientController.php(17): App\Controllers\ClientController->initDatabase()
+#6 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\system\CodeIgniter.php(922): App\Controllers\ClientController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+#7 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\system\CodeIgniter.php(488): CodeIgniter\CodeIgniter->createController()
+#8 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\system\Boot.php(417): CodeIgniter\CodeIgniter->run()
+#10 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\public\router.php(14): require('E:\\S4\\Mr rojo\\P...')
+#13 {main}
+CRITICAL - 2026-07-20 08:40:57 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [SQLite3]: SQLite3 error: Unable to open database: unable to open database file
+[Method: GET, Route: login]
+in SYSTEMPATH\Database\BaseConnection.php on line 606.
+ 1 SYSTEMPATH\Database\SQLite3\Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+ 3 SYSTEMPATH\Database\BaseConnection.php(1706): CodeIgniter\Database\BaseConnection->query('SELECT "NAME" FROM "SQLITE_MASTER" WHERE "TYPE" = \'table\' AND "NAME" NOT LIKE \'sqlite!_%\' ESCAPE \'!\'')
+ 4 APPPATH\Controllers\ClientController.php(23): CodeIgniter\Database\BaseConnection->listTables()
+ 5 APPPATH\Controllers\ClientController.php(17): App\Controllers\ClientController->initDatabase()
+ 6 SYSTEMPATH\CodeIgniter.php(922): App\Controllers\ClientController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 7 SYSTEMPATH\CodeIgniter.php(488): CodeIgniter\CodeIgniter->createController()
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 FCPATH\router.php(14): require('E:\\S4\\Mr rojo\\Projet_MObile_Money\\codeigniter4\\public\\index.php')
+DEBUG - 2026-07-20 08:41:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-07-20 08:41:12 --> Error connecting to the database: Exception: Unable to open database: unable to open database file in E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\system\Database\SQLite3\Connection.php:111
+Stack trace:
+#0 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\system\Database\SQLite3\Connection.php(111): SQLite3->__construct('E:\\S4\\Mr rojo\\P...')
+#1 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\system\Database\BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect(false)
+#2 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\system\Database\SQLite3\Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#3 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\system\Database\BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+#4 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\system\Database\BaseConnection.php(1706): CodeIgniter\Database\BaseConnection->query('SELECT "NAME" F...')
+#5 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\app\Controllers\ClientController.php(23): CodeIgniter\Database\BaseConnection->listTables()
+#6 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\app\Controllers\ClientController.php(17): App\Controllers\ClientController->initDatabase()
+#7 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\system\CodeIgniter.php(922): App\Controllers\ClientController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+#8 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\system\CodeIgniter.php(488): CodeIgniter\CodeIgniter->createController()
+#9 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\system\Boot.php(417): CodeIgniter\CodeIgniter->run()
+#11 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\public\router.php(15): require('E:\\S4\\Mr rojo\\P...')
+#14 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: SQLite3 error: Unable to open database: unable to open database file in E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\system\Database\SQLite3\Connection.php:118
+Stack trace:
+#0 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\system\Database\BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect(false)
+#1 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\system\Database\SQLite3\Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#2 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\system\Database\BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+#3 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\system\Database\BaseConnection.php(1706): CodeIgniter\Database\BaseConnection->query('SELECT "NAME" F...')
+#4 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\app\Controllers\ClientController.php(23): CodeIgniter\Database\BaseConnection->listTables()
+#5 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\app\Controllers\ClientController.php(17): App\Controllers\ClientController->initDatabase()
+#6 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\system\CodeIgniter.php(922): App\Controllers\ClientController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+#7 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\system\CodeIgniter.php(488): CodeIgniter\CodeIgniter->createController()
+#8 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\system\Boot.php(417): CodeIgniter\CodeIgniter->run()
+#10 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\public\router.php(15): require('E:\\S4\\Mr rojo\\P...')
+#13 {main}
+DEBUG - 2026-07-20 08:41:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-07-20 08:41:54 --> Error connecting to the database: Exception: Unable to open database: unable to open database file in E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\system\Database\SQLite3\Connection.php:111
+Stack trace:
+#0 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\system\Database\SQLite3\Connection.php(111): SQLite3->__construct('E:\\S4\\Mr rojo\\P...')
+#1 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\system\Database\BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect(false)
+#2 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\system\Database\SQLite3\Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#3 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\system\Database\BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+#4 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\system\Database\BaseConnection.php(1706): CodeIgniter\Database\BaseConnection->query('SELECT "NAME" F...')
+#5 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\app\Controllers\ClientController.php(23): CodeIgniter\Database\BaseConnection->listTables()
+#6 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\app\Controllers\ClientController.php(17): App\Controllers\ClientController->initDatabase()
+#7 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\system\CodeIgniter.php(922): App\Controllers\ClientController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+#8 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\system\CodeIgniter.php(488): CodeIgniter\CodeIgniter->createController()
+#9 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\system\Boot.php(417): CodeIgniter\CodeIgniter->run()
+#11 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\public\router.php(17): require('E:\\S4\\Mr rojo\\P...')
+#14 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: SQLite3 error: Unable to open database: unable to open database file in E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\system\Database\SQLite3\Connection.php:118
+Stack trace:
+#0 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\system\Database\BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect(false)
+#1 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\system\Database\SQLite3\Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#2 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\system\Database\BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+#3 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\system\Database\BaseConnection.php(1706): CodeIgniter\Database\BaseConnection->query('SELECT "NAME" F...')
+#4 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\app\Controllers\ClientController.php(23): CodeIgniter\Database\BaseConnection->listTables()
+#5 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\app\Controllers\ClientController.php(17): App\Controllers\ClientController->initDatabase()
+#6 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\system\CodeIgniter.php(922): App\Controllers\ClientController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+#7 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\system\CodeIgniter.php(488): CodeIgniter\CodeIgniter->createController()
+#8 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\system\Boot.php(417): CodeIgniter\CodeIgniter->run()
+#10 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 E:\S4\Mr rojo\Projet_MObile_Money\codeigniter4\public\router.php(17): require('E:\\S4\\Mr rojo\\P...')
+#13 {main}
+DEBUG - 2026-07-20 08:43:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 08:43:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 08:44:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 08:45:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 08:45:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 08:46:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 08:47:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 08:48:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 08:52:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 08:52:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 08:52:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 08:52:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 08:52:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 08:53:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 08:53:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 08:55:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 08:55:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 08:55:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 08:55:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 08:56:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 08:56:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 08:56:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 08:56:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 08:57:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 08:59:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 08:59:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 09:02:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 09:02:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 09:02:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 09:02:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 09:02:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 09:02:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 09:02:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 09:02:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 09:02:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 09:03:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 09:03:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 09:05:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 09:05:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 09:05:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 09:05:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 09:05:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 09:05:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 09:05:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 09:06:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 09:06:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 09:06:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 09:06:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 09:06:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 09:06:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 09:06:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 09:06:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 09:06:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 09:07:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 09:07:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 09:07:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 09:07:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 09:07:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 09:07:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 09:11:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 09:11:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 09:11:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 09:11:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 09:11:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 09:11:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 09:11:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 09:11:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 09:11:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 09:12:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 09:12:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 09:13:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 09:13:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-20 09:13:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+>>>>>>> Stashed changes
