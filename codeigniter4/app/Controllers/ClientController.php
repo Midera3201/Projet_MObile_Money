@@ -23,7 +23,7 @@ class ClientController extends BaseController
         $tables = $db->listTables();
 
         if (!in_array('prefices', $tables)) {
-            $db->query("CREATE TABLE prefices (
+<
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 prefixe TEXT NOT NULL UNIQUE,
                 statut INTEGER DEFAULT 1,
@@ -33,7 +33,7 @@ class ClientController extends BaseController
         }
 
         if (!in_array('types_operations', $tables)) {
-            $db->query("CREATE TABLE types_operations (
+
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 code TEXT NOT NULL UNIQUE,
                 libelle TEXT NOT NULL
@@ -42,7 +42,7 @@ class ClientController extends BaseController
         }
 
         if (!in_array('baremes', $tables)) {
-            $db->query("CREATE TABLE baremes (
+
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 id_type_operation INTEGER NOT NULL,
                 montant_min REAL NOT NULL,
@@ -64,7 +64,7 @@ class ClientController extends BaseController
         }
 
         if (!in_array('clients', $tables)) {
-            $db->query("CREATE TABLE clients (
+
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 telephone TEXT NOT NULL UNIQUE,
                 nom TEXT DEFAULT '',
@@ -74,7 +74,7 @@ class ClientController extends BaseController
         }
 
         if (!in_array('transactions', $tables)) {
-            $db->query("CREATE TABLE transactions (
+
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 id_client INTEGER NOT NULL,
                 type_operation TEXT NOT NULL,
@@ -145,49 +145,5 @@ class ClientController extends BaseController
             'client' => $client
         ]);
     }
-
-    public function depot()
-    {
-        if (!$this->isLoggedIn()) {
-            return redirect()->to('/login');
-        }
-
-        return $this->render('client/depot');
-    }
-
-    public function storeDepot()
-    {
-        if (!$this->isLoggedIn()) {
-            return redirect()->to('/login');
-        }
-
-        $montant = (float) $this->request->getPost('montant');
-
-        if ($montant <= 0) {
-            return redirect()->back()->with('error', 'Montant invalide.');
-        }
-
-        $db = \Config\Database::connect();
-        $db->transStart();
-
-        $this->transactionModel->insert([
-            'id_client' => $this->currentUser['id'],
-            'type_operation' => 'depot',
-            'montant' => $montant,
-            'frais' => 0,
-            'montant_total' => $montant,
-        ]);
-
-        $this->clientModel->update($this->currentUser['id'], [
-            'solde' => $this->currentUser['solde'] + $montant
-        ]);
-
-        $db->transComplete();
-
-        if ($db->transStatus() === false) {
-            return redirect()->back()->with('error', 'Erreur lors du dépôt.');
-        }
-
-        return redirect()->to('/client/dashboard')->with('success', 'Dépôt de ' . number_format($montant, 0, ',', ' ') . ' FCFA effectué.');
-    }
+<
 }
