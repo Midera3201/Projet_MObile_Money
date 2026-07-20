@@ -1,4 +1,5 @@
 
+
 <div class="row">
     <div class="col-md-8 mx-auto">
         <div class="card shadow">
@@ -15,7 +16,7 @@
             <div class="col-3">
                 <a href="/client/depot" class="btn btn-success w-100 py-3">
                     <div class="fw-bold">Dépôt</div>
-                 
+
                 </a>
             </div>
             <div class="col-3">
@@ -27,10 +28,7 @@
             <div class="col-3">
                 <a href="/client/transfert" class="btn btn-info text-white w-100 py-3">
                     <div class="fw-bold">Transfert</div>
-                   
-                </a>
-            </div>
-          
+
                 </a>
             </div>
         </div>
