@@ -27,12 +27,12 @@ x-3	Operation de depot/Depot automatique avec mise a jour du solde
   ## Taches.md - Version 2
 ## Module Client (Binome 1)
 #	Tache	Description
-1-Option inclure les frais de retrait	Ajouter une option permettant dinclure les frais de retrait lors dun transfert
-2-Envoi multiple	Permettre lenvoi vers plusieurs numeros en une seule operation
-3-Repartition automatique du montant	Diviser automatiquement le montant total entre les differents destinataires
-4-Mise a jour de lhistorique	Enregistrer toutes les operations issues dun envoi multiple
-5-Mise a jour de linterface client	Adapter les formulaires et les vues Bootstrap aux nouvelles fonctionnalites
-6-Tests et integration	Verification du bon fonctionnement des nouvelles fonctionnalites client
+1-Option inclure les frais de retrait	Ajouter une option permettant d'inclure les frais de retrait lors d'un transfert	✓ Termine
+2-Envoi multiple	Permettre l'envoi vers plusieurs numeros en une seule operation	✓ Termine
+3-Repartition automatique du montant	Diviser automatiquement le montant total entre les differents destinataires	✓ Termine
+4-Mise a jour de l'historique	Enregistrer toutes les operations issues d'un envoi multiple	✓ Termine
+5-Mise a jour de l'interface client	Adapter les formulaires et les vues Bootstrap aux nouvelles fonctionnalites	✓ Termine
+6-Tests et integration	Verification du bon fonctionnement des nouvelles fonctionnalites client	✓ Termine
 
 
 ##   Module Operateur (Binome 2)
