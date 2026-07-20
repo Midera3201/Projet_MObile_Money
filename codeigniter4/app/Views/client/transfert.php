@@ -14,7 +14,7 @@
                         <input type="text" class="form-control form-control-lg text-center" id="destinataire" name="destinataire" placeholder="033 00 000 00" required maxlength="10">
                     </div>
                     <div class="mb-3">
-                        <label for="montant" class="form-label">Montant (FCFA)</label>
+                        <label for="montant" class="form-label">Montant (Ar)</label>
                         <input type="number" class="form-control form-control-lg text-center" id="montant" name="montant" min="100" step="100" placeholder="100" required>
                         <div class="form-text">Des frais de transfert s'appliquent selon le montant.</div>
                     </div>

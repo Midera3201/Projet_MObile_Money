@@ -1,0 +1,4 @@
+codeigniter4/writable/
+codeigniter4/.env
+*.db
+*.log
