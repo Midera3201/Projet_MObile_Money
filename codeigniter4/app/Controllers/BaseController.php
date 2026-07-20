@@ -42,8 +42,9 @@ class BaseController extends Controller
     protected function render($view, $data = [])
     {
         $data['currentUser'] = $this->currentUser;
-        return view($view, $data);
-
+        return view('templates/header', $data)
+             . view($view, $data)
+             . view('templates/footer', $data);
     }
 }
 
