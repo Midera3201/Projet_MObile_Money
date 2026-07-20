@@ -16,10 +16,11 @@
 <body>
     <div class="sidebar">
         <h5>Mobile Money</h5>
-        <a href="/admin" class="active">Dashboard</a>
+        <a href="/admin">Dashboard</a>
         <a href="/admin/prefixes">Prefixes</a>
         <a href="/admin/types">Types operations</a>
         <a href="/admin/baremes">Baremes de frais</a>
+        <a href="/admin/operateurs">Operateurs externes</a>
         <hr class="text-secondary">
         <a href="/admin/logout">Deconnexion</a>
     </div>

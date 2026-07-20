@@ -36,6 +36,12 @@ $routes->group('admin', ['filter' => 'adminAuth'], function ($routes) {
     $routes->get('baremes', 'Admin\BaremeController::index');
     $routes->post('baremes/create', 'Admin\BaremeController::create');
     $routes->get('baremes/delete/(:num)', 'Admin\BaremeController::delete/$1');
+
+    // Operateurs externes
+    $routes->get('operateurs', 'Admin\OperateurExterneController::index');
+    $routes->post('operateurs/create', 'Admin\OperateurExterneController::create');
+    $routes->get('operateurs/delete/(:num)', 'Admin\OperateurExterneController::delete/$1');
+    $routes->get('operateurs/toggle/(:num)', 'Admin\OperateurExterneController::toggle/$1');
 });
 
 $routes->get('/login', 'ClientController::login');

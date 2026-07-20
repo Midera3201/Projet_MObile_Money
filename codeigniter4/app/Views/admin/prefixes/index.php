@@ -20,18 +20,18 @@
 </div>
 
 <div class="card">
-    <div class="card-header bg-white"><h5 class="mb-0">Liste des prefixes</h5></div>
+    <div class="card-header bg-white"><h5 class="mb-0">Prefixes de l'operateur</h5></div>
     <div class="card-body">
         <table class="table table-bordered mb-0">
-            <thead class="table-light"><tr><th>ID</th><th>Prefixe</th><th>Actif</th><th>Actions</th></tr></thead>
+            <thead class="table-light"><tr><th>ID</th><th>Prefixe</th><th>Statut</th><th>Actions</th></tr></thead>
             <tbody>
                 <?php foreach ($prefixes as $p): ?>
                     <tr>
                         <td><?= $p->id ?></td>
-                        <td><strong><?= $p->prefixe ?></strong></td>
-                        <td><span class="badge bg-<?= $p->actif ? 'success' : 'secondary' ?>"><?= $p->actif ? 'Oui' : 'Non' ?></span></td>
+                        <td><strong><?= esc($p->prefixe) ?></strong></td>
+                        <td><span class="badge bg-<?= $p->statut ? 'success' : 'secondary' ?>"><?= $p->statut ? 'Actif' : 'Inactif' ?></span></td>
                         <td>
-                            <a href="/admin/prefixes/toggle/<?= $p->id ?>" class="btn btn-sm btn-warning"><?= $p->actif ? 'Desactiver' : 'Activer' ?></a>
+                            <a href="/admin/prefixes/toggle/<?= $p->id ?>" class="btn btn-sm btn-warning"><?= $p->statut ? 'Desactiver' : 'Activer' ?></a>
                             <a href="/admin/prefixes/delete/<?= $p->id ?>" class="btn btn-sm btn-danger" onclick="return confirm('Supprimer ?')">Supprimer</a>
                         </td>
                     </tr>
