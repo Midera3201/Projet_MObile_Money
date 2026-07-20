@@ -3,22 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mobile Money</title>
+    <title>MobileMoney - Transfert d'argent</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <style>
-        body { background-color: #f5f5f5; }
-        .navbar-brand { font-weight: bold; font-size: 1.5rem; }
-        .card { border-radius: 15px; border: none; }
-        .btn { border-radius: 10px; }
+        body { background-color: #f0f2f5; font-family: 'Segoe UI', Tahoma, sans-serif; }
+        .navbar-brand { font-weight: 700; font-size: 1.4rem; letter-spacing: -0.5px; }
+        .card { border-radius: 16px; border: none; box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+        .btn { border-radius: 10px; font-weight: 600; }
         .display-4 { font-weight: 700; }
+        .btn-action { transition: transform 0.15s; }
+        .btn-action:hover { transform: translateY(-2px); }
     </style>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary bg-gradient shadow-sm">
     <div class="container">
         <a class="navbar-brand" href="/">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-phone" viewBox="0 0 16 16"><path d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h6zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H5z"/><path d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/></svg>
-            MobileMoney
+            <i class="bi bi-phone me-2"></i>MobileMoney
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
@@ -26,9 +28,9 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <?php if (session()->has("user")): ?>
-                    <li class="nav-item"><a class="nav-link" href="/client/dashboard">Dashboard</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/client/historique">Historique</a></li>
-                    <li class="nav-item"><a class="nav-link btn btn-light text-primary ms-2 px-3" href="/logout">Déconnexion</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/client/dashboard"><i class="bi bi-speedometer2 me-1"></i>Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/client/historique"><i class="bi bi-clock-history me-1"></i>Historique</a></li>
+                    <li class="nav-item"><a class="nav-link btn btn-light text-primary ms-2 px-3 rounded-pill" href="/logout"><i class="bi bi-box-arrow-right me-1"></i>Déconnexion</a></li>
                 <?php endif; ?>
             </ul>
         </div>
