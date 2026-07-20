@@ -22,18 +22,10 @@ class ClientController extends BaseController
         $db = \Config\Database::connect();
         $tables = $db->listTables();
 
-        if (!in_array('prefices', $tables)) {
 
     }
 
     public function login()
     {
 
-        return $this->render('client/login');
-    }
-
-    public function logout()
-    {
-        $this->session->remove('user');
- main
 }

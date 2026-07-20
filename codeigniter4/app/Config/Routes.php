@@ -3,7 +3,6 @@
 use CodeIgniter\Router\RouteCollection;
 
 /**
- * @var RouteCollection $routes
 
 $routes->get('/login', 'ClientController::login');
 $routes->post('/login', 'ClientController::login');
@@ -20,4 +19,3 @@ $routes->get('/client/historique', 'ClientController::historique');
 $routes->get('/hello', 'Home::index');
 $routes->get('/produits', 'Produits::index');
 $routes->get('/produits/(:num)', 'Produits::show/$1');
-

@@ -1,6 +1,6 @@
 <?php
 namespace App\Models;
-n
+
 class ClientModel extends Model
 {
     protected $table = 'clients';
