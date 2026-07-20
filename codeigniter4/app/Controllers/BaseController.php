@@ -15,36 +15,27 @@ class BaseController extends Controller
     public function initController($request, $response, $logger)
     {
         parent::initController($request, $response, $logger);
-        // Initialisation de la session
         $this->session = \Config\Services::session();
-        // Récupération de l'utilisateur connecté (si existe)
         $this->currentUser = $this->session->get('user');
     }
-    /**
-    * Vérifie si un utilisateur est connecté
-    */
+
     protected function isLoggedIn()
     {
         return $this->currentUser !== null;
     }
-    /**
-    * Redirection si non connecté
-    */
+
     protected function requireLogin()
     {
         if (!$this->isLoggedIn()) {
-        return redirect()->to('/login');
+            return redirect()->to('/login');
+        }
     }
-    }
-    /**
-    * Méthode pour envoyer des données aux vues
-    */
+
     protected function render($view, $data = [])
     {
         $data['currentUser'] = $this->currentUser;
-        return view($view, $data);
-
+        return view('templates/header', $data)
+             . view($view, $data)
+             . view('templates/footer', $data);
     }
 }
-
-?>
