@@ -11,24 +11,6 @@
             </div>
         </div>
 
-        <div class="row mt-4 g-2">
-            <div class="col-3">
-                <a href="/client/depot" class="btn btn-success w-100 py-3">
-                    <div class="fw-bold">Dépôt</div>
-
-                </a>
-            </div>
-            <div class="col-3">
-                <a href="/client/retrait" class="btn btn-warning w-100 py-3">
-                    <div class="fw-bold">Retrait</div>
-                    <small>Retirer</small>
-                </a>
-            </div>
-            <div class="col-3">
-                <a href="/client/transfert" class="btn btn-info text-white w-100 py-3">
-                    <div class="fw-bold">Transfert</div>
-
-                </a>
             </div>
         </div>
     </div>

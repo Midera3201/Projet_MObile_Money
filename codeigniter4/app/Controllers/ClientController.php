@@ -36,9 +36,4 @@ class ClientController extends BaseController
     {
         $this->session->remove('user');
 
-    }
-
-    public function dashboard()
-    {
-
 }
