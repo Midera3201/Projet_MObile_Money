@@ -112,36 +112,49 @@ class ClientController extends BaseController
     public function storeTransfert()
     {
         if (!$this->isLoggedIn()) return redirect()->to("/login");
-        $destinataire = trim($this->request->getPost("destinataire"));
+        $destinatairesRaw = trim($this->request->getPost("destinataires"));
         $montant = (float) $this->request->getPost("montant");
         $inclureFrais = $this->request->getPost("inclure_frais") ? true : false;
 
         if ($montant <= 0) return redirect()->back()->with("error", "Montant invalide.");
-        if ($destinataire === $this->currentUser["telephone"]) return redirect()->back()->with("error", "Transfert à soi-même interdit.");
-        $destClient = $this->clientModel->where("telephone", $destinataire)->first();
-        if (!$destClient) return redirect()->back()->with("error", "Destinataire introuvable.");
+
+        $destinataires = array_filter(array_map("trim", preg_split("/[\r\n,]+/", $destinatairesRaw)));
+        if (empty($destinataires)) return redirect()->back()->with("error", "Aucun destinataire valide.");
 
         $fraisTransfert = $this->calculerFrais("transfert", $montant);
         $fraisRetrait = 0;
         if ($inclureFrais) {
             $fraisRetrait = $this->calculerFrais("retrait", $montant);
         }
-        $totalFrais = $fraisTransfert + $fraisRetrait;
-        $total = $montant + $totalFrais;
+        $totalFraisParEnvoi = $fraisTransfert + $fraisRetrait;
+        $totalParEnvoi = $montant + $totalFraisParEnvoi;
+        $totalGlobal = $totalParEnvoi * count($destinataires);
 
         $client = $this->clientModel->find($this->currentUser["id"]);
-        if ($client["solde"] < $total) return redirect()->back()->with("error", "Solde insuffisant.");
+        if ($client["solde"] < $totalGlobal) return redirect()->back()->with("error", "Solde insuffisant. Besoin de " . number_format($totalGlobal, 0, ",", " ") . " Ar.");
 
         $db = \Config\Database::connect();
         $db->transStart();
-        $this->transactionModel->insert(["id_client" => $client["id"], "type_operation" => "transfert", "montant" => $montant, "frais" => $totalFrais, "montant_total" => $total, "destinataire" => $destinataire]);
-        $this->clientModel->update($client["id"], ["solde" => $client["solde"] - $total]);
-        $this->clientModel->update($destClient["id"], ["solde" => $destClient["solde"] + $montant]);
-        $db->transComplete();
-        if ($db->transStatus() === false) return redirect()->back()->with("error", "Erreur lors du transfert.");
 
-        $msg = "Transfert de " . number_format($montant, 0, ",", " ") . " Ar vers " . $destinataire . " effectué (frais: " . number_format($fraisTransfert, 0, ",", " ") . " Ar)";
-        if ($inclureFrais) $msg .= " - frais de retrait inclus: " . number_format($fraisRetrait, 0, ",", " ") . " Ar";
+        $envoyes = [];
+        foreach ($destinataires as $dest) {
+            if ($dest === $client["telephone"]) continue;
+            $destClient = $this->clientModel->where("telephone", $dest)->first();
+            if (!$destClient) continue;
+
+            $this->transactionModel->insert(["id_client" => $client["id"], "type_operation" => "transfert", "montant" => $montant, "frais" => $totalFraisParEnvoi, "montant_total" => $totalParEnvoi, "destinataire" => $dest]);
+            $this->clientModel->update($destClient["id"], ["solde" => $destClient["solde"] + $montant]);
+            $envoyes[] = $dest;
+        }
+
+        $totalDebite = $totalParEnvoi * count($envoyes);
+        $this->clientModel->update($client["id"], ["solde" => $client["solde"] - $totalDebite]);
+
+        $db->transComplete();
+        if ($db->transStatus() === false) return redirect()->back()->with("error", "Erreur lors des transferts.");
+
+        $msg = count($envoyes) . " transfert(s) effectué(s)";
+        if ($inclureFrais) $msg .= " (frais de retrait inclus)";
         return redirect()->to("/client/dashboard")->with("success", $msg . ".");
     }
 
