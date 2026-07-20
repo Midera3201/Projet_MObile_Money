@@ -13,7 +13,7 @@
                 <h4><?= $client["telephone"] ?></h4>
                 <hr class="my-4">
                 <p class="text-muted mb-0">Solde disponible</p>
-                <h1 class="display-4 text-primary fw-bold"><?= number_format($client["solde"], 0, ",", " ") ?> FCFA</h1>
+                <h1 class="display-4 text-primary fw-bold"><?= number_format($client["solde"], 0, ",", " ") ?> Ar</h1>
             </div>
         </div>
 
@@ -38,6 +38,10 @@
                     <small>Envoyer</small>
                 </a>
             </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="/admin/login" class="btn btn-outline-secondary">← Espace Administration</a>
         </div>
     </div>
 </div>

@@ -23,6 +23,8 @@
                     </div>
                     <button type="submit" class="btn btn-primary btn-lg w-100">Se connecter</button>
                 </form>
+                <hr class="my-4">
+                <a href="/admin/login" class="btn btn-outline-secondary w-100">← Espace Administration</a>
             </div>
         </div>
     </div>

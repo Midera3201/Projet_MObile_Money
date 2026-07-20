@@ -7,6 +7,10 @@ codeigniter4/.env
 # Vendor Composer
 codeigniter4/vendor/
 
+# Fichiers temporaires
+*.db
+*.log
+
 # Fichiers OS
 Thumbs.db
 .DS_Store
