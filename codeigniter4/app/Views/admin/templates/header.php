@@ -24,6 +24,7 @@
             <li class="nav-item"><a class="nav-link" href="/admin/baremes">Barèmes</a></li>
             <li class="nav-item"><a class="nav-link" href="/admin/operateurs">Opérateurs externes</a></li>
             <li class="nav-item"><a class="nav-link" href="/admin/commissions">Commissions</a></li>
+            <li class="nav-item"><a class="nav-link" href="/admin/simulateur">Simulateur</a></li>
             <li class="nav-item mt-4"><a class="nav-link text-danger" href="/admin/logout">Déconnexion</a></li>
         </ul>
     </div>
