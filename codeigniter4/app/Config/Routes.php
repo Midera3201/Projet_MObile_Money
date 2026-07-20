@@ -46,6 +46,10 @@ $routes->group('admin', ['filter' => 'adminAuth'], function ($routes) {
     // Commissions
     $routes->get('commissions', 'Admin\CommissionController::index');
     $routes->post('commissions/update/(:num)', 'Admin\CommissionController::update/$1');
+
+    // Simulateur de transfert
+    $routes->get('simulateur', 'Admin\TransferController::simulateur');
+    $routes->post('simulateur', 'Admin\TransferController::simulateur');
 });
 
 $routes->get('/login', 'ClientController::login');
