@@ -42,7 +42,12 @@ class BaseController extends Controller
             $db->query("CREATE TABLE clients (id INTEGER PRIMARY KEY AUTOINCREMENT, telephone TEXT NOT NULL UNIQUE, nom TEXT DEFAULT '', solde REAL DEFAULT 0, date_creation DATETIME DEFAULT CURRENT_TIMESTAMP)");
         }
         if (!in_array("transactions", $tables)) {
-            $db->query("CREATE TABLE transactions (id INTEGER PRIMARY KEY AUTOINCREMENT, id_client INTEGER NOT NULL, type_operation TEXT NOT NULL, montant REAL NOT NULL, frais REAL DEFAULT 0, montant_total REAL DEFAULT 0, destinataire TEXT DEFAULT NULL, date_creation DATETIME DEFAULT CURRENT_TIMESTAMP, FOREIGN KEY (id_client) REFERENCES clients(id))");
+            $db->query("CREATE TABLE transactions (id INTEGER PRIMARY KEY AUTOINCREMENT, id_client INTEGER NOT NULL, type_operation TEXT NOT NULL, montant REAL NOT NULL, frais REAL DEFAULT 0, montant_total REAL DEFAULT 0, destinataire TEXT DEFAULT NULL, batch_id TEXT DEFAULT NULL, date_creation DATETIME DEFAULT CURRENT_TIMESTAMP, FOREIGN KEY (id_client) REFERENCES clients(id))");
+        } else {
+            $cols = $db->getFieldNames("transactions");
+            if (!in_array("batch_id", $cols)) {
+                $db->query("ALTER TABLE transactions ADD COLUMN batch_id TEXT DEFAULT NULL");
+            }
         }
     }
 
