@@ -1,24 +1,24 @@
-<div class="row justify-content-center">
-    <div class="col-md-5 col-lg-4">
-        <div class="card">
-            <div class="card-body p-4">
-                <div class="text-center mb-4">
-                    <div class="bg-success bg-gradient text-white d-inline-flex rounded-3 p-3 mb-2">
-                        <i class="bi bi-plus-circle fs-2"></i>
-                    </div>
-                    <h3 class="fw-bold mt-2">Dépôt</h3>
+<?php if (session()->getFlashdata("success")): ?>
+    <div class="alert-custom success"><i class="bi bi-check-circle"></i> <?= session()->getFlashdata("success") ?></div>
+<?php endif; ?>
+<?php if (session()->getFlashdata("error")): ?>
+    <div class="alert-custom error"><i class="bi bi-exclamation-circle"></i> <?= session()->getFlashdata("error") ?></div>
+<?php endif; ?>
+
+<div style="max-width:440px;margin:0 auto;">
+    <div class="card-custom">
+        <div class="card-header-custom">
+            <h6 style="margin:0;font-weight:600;"><i class="bi bi-plus-circle me-2" style="color:var(--primary);"></i>Dépôt</h6>
+        </div>
+        <div class="card-body-custom">
+            <form method="post" action="/client/depot" class="form-custom">
+                <div class="mb-4">
+                    <label class="form-label">Montant (Ar)</label>
+                    <input type="number" class="form-control text-center" name="montant" min="100" step="100" placeholder="10000" required style="font-size:18px;font-weight:600;">
                 </div>
-                <?php if (session()->getFlashdata("success")): ?><div class="alert alert-success"><?= session()->getFlashdata("success") ?></div><?php endif; ?>
-                <?php if (session()->getFlashdata("error")): ?><div class="alert alert-danger"><?= session()->getFlashdata("error") ?></div><?php endif; ?>
-                <form method="post" action="/client/depot">
-                    <div class="mb-3">
-                        <label for="montant" class="form-label fw-semibold">Montant (Ar)</label>
-                        <input type="number" class="form-control form-control-lg text-center" id="montant" name="montant" min="100" step="100" placeholder="100" required>
-                    </div>
-                    <button type="submit" class="btn btn-success btn-lg w-100 rounded-pill"><i class="bi bi-check-lg me-1"></i>Déposer</button>
-                    <a href="/client/dashboard" class="btn btn-outline-secondary w-100 mt-2 rounded-pill">Annuler</a>
-                </form>
-            </div>
+                <button type="submit" class="btn-custom green full"><i class="bi bi-check-lg"></i> Déposer</button>
+                <a href="/client/dashboard" class="btn-custom full mt-2">Annuler</a>
+            </form>
         </div>
     </div>
 </div>
