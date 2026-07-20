@@ -50,6 +50,10 @@ $routes->group('admin', ['filter' => 'adminAuth'], function ($routes) {
     // Simulateur de transfert
     $routes->get('simulateur', 'Admin\TransferController::simulateur');
     $routes->post('simulateur', 'Admin\TransferController::simulateur');
+
+    // Reporting
+    $routes->get('reporting/gains', 'Admin\ReportingController::gains');
+    $routes->get('reporting/montants', 'Admin\ReportingController::montantsAEnvoyer');
 });
 
 $routes->get('/login', 'ClientController::login');
