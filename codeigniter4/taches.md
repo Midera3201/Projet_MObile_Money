@@ -2,9 +2,9 @@
 ### Version V1
   ### Module Client (Binome 1)
 #	Tache	Description
-1	Auto login par numero de telephone/Connexion automatique par numero valide sans inscription
-2	Consultation du solde/Affichage du solde du client connecte
-3	Operation de depot/Depot automatique avec mise a jour du solde
+x-1	Auto login par numero de telephone/Connexion automatique par numero valide sans inscription
+x-2	Consultation du solde/Affichage du solde du client connecte
+x-3	Operation de depot/Depot automatique avec mise a jour du solde
 4	Operation de retrait/Retrait automatique avec calcul des frais
 5	Operation de transfert/Transfert vers un autre client avec calcul des frais
 6	Historique des transactions/Liste chronologique des operations du client
