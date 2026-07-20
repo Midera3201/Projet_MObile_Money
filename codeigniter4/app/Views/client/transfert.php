@@ -1,32 +1,34 @@
-<div class="row justify-content-center">
-    <div class="col-md-5 col-lg-4">
-        <div class="card shadow-lg">
-            <div class="card-body p-4">
-                <h3 class="text-center mb-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#0dcaf0" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/></svg>
-                    Transfert
-                </h3>
-                <?php if (session()->getFlashdata("success")): ?><div class="alert alert-success"><?= session()->getFlashdata("success") ?></div><?php endif; ?>
-                <?php if (session()->getFlashdata("error")): ?><div class="alert alert-danger"><?= session()->getFlashdata("error") ?></div><?php endif; ?>
-                <form method="post" action="/client/transfert">
-                    <div class="mb-3">
-                        <label for="destinataires" class="form-label">Destinataire(s)</label>
-                        <textarea class="form-control form-control-lg text-center" id="destinataires" name="destinataires" rows="3" placeholder="033 00 000 00&#10;037 00 000 00" required></textarea>
-                        <div class="form-text">Un numéro par ligne. L'envoi se fera à chaque destinataire.</div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="montant" class="form-label">Montant total à répartir (Ar)</label>
-                        <input type="number" class="form-control form-control-lg text-center" id="montant" name="montant" min="100" step="100" placeholder="100" required>
-                        <div class="form-text">Le montant sera automatiquement réparti entre les destinataires. Des frais de transfert s'appliquent.</div>
-                    </div>
-                    <div class="form-check mb-3">
-                        <input type="checkbox" class="form-check-input" id="inclure_frais" name="inclure_frais" value="1">
-                        <label class="form-check-label" for="inclure_frais">Inclure les frais de retrait du destinataire</label>
-                    </div>
-                    <button type="submit" class="btn btn-info text-white btn-lg w-100">Transférer</button>
-                    <a href="/client/dashboard" class="btn btn-outline-secondary w-100 mt-2">Annuler</a>
-                </form>
-            </div>
+<?php if (session()->getFlashdata("success")): ?>
+    <div class="alert-custom success"><i class="bi bi-check-circle"></i> <?= session()->getFlashdata("success") ?></div>
+<?php endif; ?>
+<?php if (session()->getFlashdata("error")): ?>
+    <div class="alert-custom error"><i class="bi bi-exclamation-circle"></i> <?= session()->getFlashdata("error") ?></div>
+<?php endif; ?>
+
+<div style="max-width:440px;margin:0 auto;">
+    <div class="card-custom">
+        <div class="card-header-custom">
+            <h6 style="margin:0;font-weight:600;"><i class="bi bi-send me-2" style="color:var(--blue);"></i>Transfert</h6>
+        </div>
+        <div class="card-body-custom">
+            <form method="post" action="/client/transfert" class="form-custom">
+                <div class="mb-3">
+                    <label class="form-label">Destinataire(s)</label>
+                    <textarea class="form-control" name="destinataires" rows="3" placeholder="033 00 000 00&#10;037 00 000 00" required></textarea>
+                    <div style="font-size:12px;color:var(--text-light);margin-top:4px;">Un numéro par ligne.</div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Montant total à répartir (Ar)</label>
+                    <input type="number" class="form-control text-center" name="montant" min="100" step="100" placeholder="10000" required style="font-size:18px;font-weight:600;">
+                    <div style="font-size:12px;color:var(--text-light);margin-top:4px;">Le montant sera réparti entre les destinataires.</div>
+                </div>
+                <div class="form-check mb-4">
+                    <input type="checkbox" class="form-check-input" id="inclure_frais" name="inclure_frais" value="1">
+                    <label class="form-check-label" for="inclure_frais" style="font-size:13px;">Inclure les frais de retrait du destinataire</label>
+                </div>
+                <button type="submit" class="btn-custom full" style="color:var(--blue);border-color:#bfdbfe;"><i class="bi bi-send"></i> Transférer</button>
+                <a href="/client/dashboard" class="btn-custom full mt-2">Annuler</a>
+            </form>
         </div>
     </div>
 </div>
