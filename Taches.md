@@ -42,11 +42,11 @@
 
 
 ##   Module Operateur (Binome 2)
-#	Tache	Description
-7-Configuration des prefixes des autres operateurs	CRUD des prefixes des autres operateurs (031, 032, ...)
-8-Configuration des commissions	Gestion du pourcentage de commission applique aux transferts vers les autres operateurs
-9-Mise a jour du calcul des frais	Prendre en compte les commissions supplementaires lors des transferts externes
-10-Situation des gains	Separer les gains provenant de lopérateur et des autres operateurs
-11-Situation des montants a envoyer	Afficher les montants a reverser a chaque operateur externe
-12-Mise a jour de linterface operateur	Adapter les pages Bootstrap aux nouvelles fonctionnalites
-13-Tests et integration	Verification du bon fonctionnement des nouvelles fonctionnalites operateur
+#	Tache	Description	Statut
+7-Configuration des prefixes des autres operateurs	CRUD des prefixes des autres operateurs (031, 032, ...)	✓ Termine
+8-Configuration des commissions	Gestion du pourcentage de commission applique aux transferts vers les autres operateurs	✓ Termine
+9-Mise a jour du calcul des frais	Prendre en compte les commissions supplementaires lors des transferts externes	✓ Termine
+10-Situation des gains	Separer les gains provenant de lopérateur et des autres operateurs	✓ Termine
+11-Situation des montants a envoyer	Afficher les montants a reverser a chaque operateur externe	✓ Termine
+12-Mise a jour de linterface operateur	Adapter les pages Bootstrap aux nouvelles fonctionnalites	✓ Termine
+13-Tests et integration	Verification du bon fonctionnement des nouvelles fonctionnalites operateur	✓ Termine
