@@ -49,4 +49,4 @@
 10-Situation des gains	Separer les gains provenant de lopérateur et des autres operateurs
 11-Situation des montants a envoyer	Afficher les montants a reverser a chaque operateur externe
 12-Mise a jour de linterface operateur	Adapter les pages Bootstrap aux nouvelles fonctionnalites
-13-Tests et integration	Verification du bon fonctionnement des nouvelles fonctionnalites operateurdsGHDIOWHD
+13-Tests et integration	Verification du bon fonctionnement des nouvelles fonctionnalites operateurd
