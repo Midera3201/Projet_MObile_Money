@@ -121,14 +121,17 @@ class ClientController extends BaseController
         $destinataires = array_filter(array_map("trim", preg_split("/[\r\n,]+/", $destinatairesRaw)));
         if (empty($destinataires)) return redirect()->back()->with("error", "Aucun destinataire valide.");
 
-        $fraisTransfert = $this->calculerFrais("transfert", $montant);
+        $nbDestinataires = count($destinataires);
+        $montantPart = floor($montant / $nbDestinataires);
+        $reste = $montant - ($montantPart * $nbDestinataires);
+
+        $fraisTransfert = $this->calculerFrais("transfert", $montantPart);
         $fraisRetrait = 0;
         if ($inclureFrais) {
-            $fraisRetrait = $this->calculerFrais("retrait", $montant);
+            $fraisRetrait = $this->calculerFrais("retrait", $montantPart);
         }
         $totalFraisParEnvoi = $fraisTransfert + $fraisRetrait;
-        $totalParEnvoi = $montant + $totalFraisParEnvoi;
-        $totalGlobal = $totalParEnvoi * count($destinataires);
+        $totalGlobal = ($montantPart * $nbDestinataires) + ($totalFraisParEnvoi * $nbDestinataires) + $reste;
 
         $client = $this->clientModel->find($this->currentUser["id"]);
         if ($client["solde"] < $totalGlobal) return redirect()->back()->with("error", "Solde insuffisant. Besoin de " . number_format($totalGlobal, 0, ",", " ") . " Ar.");
@@ -137,18 +140,24 @@ class ClientController extends BaseController
         $db->transStart();
 
         $envoyes = [];
-        foreach ($destinataires as $dest) {
+        foreach ($destinataires as $i => $dest) {
             if ($dest === $client["telephone"]) continue;
             $destClient = $this->clientModel->where("telephone", $dest)->first();
             if (!$destClient) continue;
 
-            $this->transactionModel->insert(["id_client" => $client["id"], "type_operation" => "transfert", "montant" => $montant, "frais" => $totalFraisParEnvoi, "montant_total" => $totalParEnvoi, "destinataire" => $dest]);
-            $this->clientModel->update($destClient["id"], ["solde" => $destClient["solde"] + $montant]);
+            $montantDest = $montantPart + ($i === $nbDestinataires - 1 ? $reste : 0);
+            $fraisDest = $this->calculerFrais("transfert", $montantDest);
+            $fraisRetraitDest = 0;
+            if ($inclureFrais) $fraisRetraitDest = $this->calculerFrais("retrait", $montantDest);
+            $totalFraisDest = $fraisDest + $fraisRetraitDest;
+            $totalDest = $montantDest + $totalFraisDest;
+
+            $this->transactionModel->insert(["id_client" => $client["id"], "type_operation" => "transfert", "montant" => $montantDest, "frais" => $totalFraisDest, "montant_total" => $totalDest, "destinataire" => $dest]);
+            $this->clientModel->update($destClient["id"], ["solde" => $destClient["solde"] + $montantDest]);
             $envoyes[] = $dest;
         }
 
-        $totalDebite = $totalParEnvoi * count($envoyes);
-        $this->clientModel->update($client["id"], ["solde" => $client["solde"] - $totalDebite]);
+        $this->clientModel->update($client["id"], ["solde" => $client["solde"] - $totalGlobal]);
 
         $db->transComplete();
         if ($db->transStatus() === false) return redirect()->back()->with("error", "Erreur lors des transferts.");
