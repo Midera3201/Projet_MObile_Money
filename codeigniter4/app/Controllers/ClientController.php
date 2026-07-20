@@ -23,7 +23,7 @@ class ClientController extends BaseController
         $tables = $db->listTables();
 
         if (!in_array('prefices', $tables)) {
-            $db->query("CREATE TABLE IF NOT EXISTS prefices (
+<
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 prefixe TEXT NOT NULL UNIQUE,
                 statut INTEGER DEFAULT 1,
@@ -33,7 +33,7 @@ class ClientController extends BaseController
         }
 
         if (!in_array('types_operations', $tables)) {
-            $db->query("CREATE TABLE IF NOT EXISTS types_operations (
+
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 code TEXT NOT NULL UNIQUE,
                 libelle TEXT NOT NULL
@@ -42,7 +42,7 @@ class ClientController extends BaseController
         }
 
         if (!in_array('baremes', $tables)) {
-            $db->query("CREATE TABLE IF NOT EXISTS baremes (
+
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 id_type_operation INTEGER NOT NULL,
                 montant_min REAL NOT NULL,
@@ -64,7 +64,7 @@ class ClientController extends BaseController
         }
 
         if (!in_array('clients', $tables)) {
-            $db->query("CREATE TABLE IF NOT EXISTS clients (
+
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 telephone TEXT NOT NULL UNIQUE,
                 nom TEXT DEFAULT '',
@@ -74,7 +74,7 @@ class ClientController extends BaseController
         }
 
         if (!in_array('transactions', $tables)) {
-            $db->query("CREATE TABLE IF NOT EXISTS transactions (
+
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 id_client INTEGER NOT NULL,
                 type_operation TEXT NOT NULL,
@@ -145,4 +145,5 @@ class ClientController extends BaseController
             'client' => $client
         ]);
     }
+<
 }
