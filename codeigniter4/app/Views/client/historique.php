@@ -18,11 +18,25 @@
                             <th>Frais</th>
                             <th>Total</th>
                             <th>Destinataire</th>
+                            <th>Batch</th>
                         </tr>
                     </thead>
                     <tbody>
+                        <?php
+                        $prevBatch = null;
+                        $batchColors = ["table-secondary", "table-light"];
+                        $bi = 0;
+                        ?>
                         <?php foreach ($transactions as $t): ?>
-                            <tr>
+                            <?php
+                            $batchHere = $t["batch_id"] ?? null;
+                            if ($batchHere && $batchHere !== $prevBatch) {
+                                $bi++;
+                            }
+                            $rowClass = $batchHere ? $batchColors[$bi % 2] : "";
+                            $prevBatch = $batchHere;
+                            ?>
+                            <tr class="<?= $rowClass ?>">
                                 <td><?= date("d/m/Y H:i", strtotime($t["date_creation"])) ?></td>
                                 <td>
                                     <?php if ($t["type_operation"] === "depot"): ?>
@@ -37,11 +51,13 @@
                                 <td><?= $t["frais"] > 0 ? number_format($t["frais"], 0, ",", " ") : "-" ?></td>
                                 <td><?= number_format($t["montant_total"], 0, ",", " ") ?></td>
                                 <td><?= $t["destinataire"] ?: "-" ?></td>
+                                <td><?= $batchHere ? "<span class='badge bg-secondary'>Groupe</span>" : "-" ?></td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
+            <div class="text-muted small">Les lignes d'une même couleur appartiennent à un envoi multiple.</div>
         <?php endif; ?>
 
         <div class="text-center mt-3">

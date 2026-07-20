@@ -139,6 +139,7 @@ class ClientController extends BaseController
         $db = \Config\Database::connect();
         $db->transStart();
 
+        $batchId = uniqid("B", true);
         $envoyes = [];
         foreach ($destinataires as $i => $dest) {
             if ($dest === $client["telephone"]) continue;
@@ -152,7 +153,7 @@ class ClientController extends BaseController
             $totalFraisDest = $fraisDest + $fraisRetraitDest;
             $totalDest = $montantDest + $totalFraisDest;
 
-            $this->transactionModel->insert(["id_client" => $client["id"], "type_operation" => "transfert", "montant" => $montantDest, "frais" => $totalFraisDest, "montant_total" => $totalDest, "destinataire" => $dest]);
+            $this->transactionModel->insert(["id_client" => $client["id"], "type_operation" => "transfert", "montant" => $montantDest, "frais" => $totalFraisDest, "montant_total" => $totalDest, "destinataire" => $dest, "batch_id" => $batchId]);
             $this->clientModel->update($destClient["id"], ["solde" => $destClient["solde"] + $montantDest]);
             $envoyes[] = $dest;
         }
@@ -171,6 +172,7 @@ class ClientController extends BaseController
     {
         if (!$this->isLoggedIn()) return redirect()->to("/login");
         $transactions = $this->transactionModel->where("id_client", $this->currentUser["id"])->orderBy("date_creation", "DESC")->findAll();
-        return $this->render("client/historique", ["transactions" => $transactions]);
+        $batchIds = array_unique(array_filter(array_column($transactions, "batch_id")));
+        return $this->render("client/historique", ["transactions" => $transactions, "batchIds" => $batchIds]);
     }
 }
