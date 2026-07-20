@@ -24,7 +24,7 @@
                         <div class="mb-3">
                             <label class="form-label">Numero du destinataire</label>
                             <input type="text" class="form-control" name="destinataire" placeholder="033 00 000 00" maxlength="10" required
-                                value="<?= $this->request->getPost('destinataire') ?? '' ?>">
+                                value="<?= old('destinataire') ?>">
                             <div class="form-text">
                                 Prefices internes : 033, 037 — Externes :
                                 <?php foreach ($operateurs as $op): ?>
@@ -35,7 +35,7 @@
                         <div class="mb-3">
                             <label class="form-label">Montant (Ar)</label>
                             <input type="number" class="form-control" name="montant" min="100" step="100" placeholder="10000" required
-                                value="<?= $this->request->getPost('montant') ?? '' ?>">
+                                value="<?= old('montant') ?>">
                         </div>
                         <button type="submit" class="btn btn-primary">Calculer les frais</button>
                     </form>
