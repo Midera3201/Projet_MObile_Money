@@ -18,7 +18,7 @@
                         <input type="number" class="form-control form-control-lg text-center" id="montant" name="montant" min="100" step="100" placeholder="100" required>
                         <div class="form-text">Des frais de transfert s'appliquent selon le montant.</div>
                     </div>
-                    <button type="submit" class="btn btn-info text-white btn-lg w-100">Transf?rer</button>
+                    <button type="submit" class="btn btn-info text-white btn-lg w-100">Transférer</button>
                     <a href="/client/dashboard" class="btn btn-outline-secondary w-100 mt-2">Annuler</a>
                 </form>
             </div>

@@ -28,7 +28,7 @@ class ClientController extends BaseController
         }
         if (!in_array("types_operations", $tables)) {
             $db->query("CREATE TABLE types_operations (id INTEGER PRIMARY KEY AUTOINCREMENT, code TEXT NOT NULL UNIQUE, libelle TEXT NOT NULL)");
-            $db->query("INSERT INTO types_operations (code, libelle) VALUES ('depot', 'D?p?t'), ('retrait', 'Retrait'), ('transfert', 'Transfert')");
+            $db->query("INSERT INTO types_operations (code, libelle) VALUES ('depot', 'Dépôt'), ('retrait', 'Retrait'), ('transfert', 'Transfert')");
         }
         if (!in_array("baremes", $tables)) {
             $db->query("CREATE TABLE baremes (id INTEGER PRIMARY KEY AUTOINCREMENT, id_type_operation INTEGER NOT NULL, montant_min REAL NOT NULL, montant_max REAL NOT NULL, frais_fixe REAL DEFAULT 0, frais_pourcentage REAL DEFAULT 0, FOREIGN KEY (id_type_operation) REFERENCES types_operations(id))");
@@ -56,11 +56,11 @@ class ClientController extends BaseController
         if ($this->isLoggedIn()) return redirect()->to("/client/dashboard");
         if ($this->request->getMethod() === "POST") {
             $telephone = trim($this->request->getPost("telephone"));
-            if (empty($telephone)) return redirect()->back()->with("error", "Veuillez entrer votre num?ro.");
+            if (empty($telephone)) return redirect()->back()->with("error", "Veuillez entrer votre numéro.");
             $prefixe = substr($telephone, 0, 3);
             $db = \Config\Database::connect();
             $check = $db->query("SELECT id FROM prefices WHERE prefixe = ? AND statut = 1", [$prefixe])->getRow();
-            if (!$check) return redirect()->back()->with("error", "Num?ro invalide. Pr?fixes: 033, 037.");
+            if (!$check) return redirect()->back()->with("error", "Numéro invalide. Préfixes: 033, 037.");
             $client = $this->clientModel->where("telephone", $telephone)->first();
             if (!$client) {
                 $this->clientModel->insert(["telephone" => $telephone, "solde" => 0]);
@@ -75,7 +75,7 @@ class ClientController extends BaseController
     public function logout()
     {
         $this->session->remove("user");
-        return redirect()->to("/login")->with("success", "D?connect?.");
+        return redirect()->to("/login")->with("success", "Déconnecté.");
     }
 
     public function dashboard()
@@ -102,8 +102,8 @@ class ClientController extends BaseController
         $this->transactionModel->insert(["id_client" => $this->currentUser["id"], "type_operation" => "depot", "montant" => $montant, "frais" => 0, "montant_total" => $montant]);
         $this->clientModel->update($this->currentUser["id"], ["solde" => $this->currentUser["solde"] + $montant]);
         $db->transComplete();
-        if ($db->transStatus() === false) return redirect()->back()->with("error", "Erreur lors du d?p?t.");
-        return redirect()->to("/client/dashboard")->with("success", "D?p?t de " . number_format($montant, 0, ",", " ") . " FCFA effectu?.");
+        if ($db->transStatus() === false) return redirect()->back()->with("error", "Erreur lors du dépôt.");
+        return redirect()->to("/client/dashboard")->with("success", "Dépôt de " . number_format($montant, 0, ",", " ") . " FCFA effectué.");
     }
 
     public function retrait()
@@ -127,7 +127,7 @@ class ClientController extends BaseController
         $this->clientModel->update($client["id"], ["solde" => $client["solde"] - $total]);
         $db->transComplete();
         if ($db->transStatus() === false) return redirect()->back()->with("error", "Erreur lors du retrait.");
-        return redirect()->to("/client/dashboard")->with("success", "Retrait de " . number_format($montant, 0, ",", " ") . " FCFA (frais: " . number_format($frais, 0, ",", " ") . " FCFA) effectu?.");
+        return redirect()->to("/client/dashboard")->with("success", "Retrait de " . number_format($montant, 0, ",", " ") . " FCFA (frais: " . number_format($frais, 0, ",", " ") . " FCFA) effectué.");
     }
 
     public function transfert()
@@ -142,7 +142,7 @@ class ClientController extends BaseController
         $destinataire = trim($this->request->getPost("destinataire"));
         $montant = (float) $this->request->getPost("montant");
         if ($montant <= 0) return redirect()->back()->with("error", "Montant invalide.");
-        if ($destinataire === $this->currentUser["telephone"]) return redirect()->back()->with("error", "Transfert ? soi-m?me interdit.");
+        if ($destinataire === $this->currentUser["telephone"]) return redirect()->back()->with("error", "Transfert à soi-même interdit.");
         $destClient = $this->clientModel->where("telephone", $destinataire)->first();
         if (!$destClient) return redirect()->back()->with("error", "Destinataire introuvable.");
         $frais = $this->calculerFrais("transfert", $montant);
@@ -156,7 +156,7 @@ class ClientController extends BaseController
         $this->clientModel->update($destClient["id"], ["solde" => $destClient["solde"] + $montant]);
         $db->transComplete();
         if ($db->transStatus() === false) return redirect()->back()->with("error", "Erreur lors du transfert.");
-        return redirect()->to("/client/dashboard")->with("success", "Transfert de " . number_format($montant, 0, ",", " ") . " FCFA vers " . $destinataire . " effectu? (frais: " . number_format($frais, 0, ",", " ") . " FCFA).");
+        return redirect()->to("/client/dashboard")->with("success", "Transfert de " . number_format($montant, 0, ",", " ") . " FCFA vers " . $destinataire . " effectué (frais: " . number_format($frais, 0, ",", " ") . " FCFA).");
     }
 
     public function historique()

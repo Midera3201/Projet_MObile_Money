@@ -26,7 +26,7 @@
                                 <td><?= date("d/m/Y H:i", strtotime($t["date_creation"])) ?></td>
                                 <td>
                                     <?php if ($t["type_operation"] === "depot"): ?>
-                                        <span class="badge bg-success">D?p?t</span>
+                                        <span class="badge bg-success">Dépôt</span>
                                     <?php elseif ($t["type_operation"] === "retrait"): ?>
                                         <span class="badge bg-warning text-dark">Retrait</span>
                                     <?php else: ?>

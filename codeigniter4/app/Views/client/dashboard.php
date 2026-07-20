@@ -21,7 +21,7 @@
             <div class="col-4">
                 <a href="/client/depot" class="btn btn-success btn-lg w-100 py-4 shadow">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16"><path d="M8 1a.5.5 0 0 1 .5.5v6h6a.5.5 0 0 1 0 1h-6v6a.5.5 0 0 1-1 0v-6h-6a.5.5 0 0 1 0-1h6v-6A.5.5 0 0 1 8 1z"/></svg>
-                    <div class="fw-bold mt-1">D?p?t</div>
+                    <div class="fw-bold mt-1">Dépôt</div>
                 </a>
             </div>
             <div class="col-4">
