@@ -4,13 +4,6 @@
             <div class="card-body p-4">
                 <h3 class="text-center mb-4">Dépôt</h3>
 
-                <?php if (session()->getFlashdata('error')): ?>
-                    <div class="alert alert-danger"><?= session()->getFlashdata('error') ?></div>
-                <?php endif; ?>
-                <?php if (session()->getFlashdata('success')): ?>
-                    <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
-                <?php endif; ?>
-
                 <form method="post" action="/client/depot">
                     <div class="mb-3">
                         <label for="montant" class="form-label">Montant à déposer (FCFA)</label>
