@@ -32,7 +32,7 @@
                             <button type="submit" class="btn btn-primary btn-lg w-100">Connexion</button>
                         </form>
                         <hr class="my-4">
-                        <a href="/login" class="btn btn-outline-secondary w-100">← Retour à l'espace Client</a>
+                        <a href="/login" class="btn btn-outline-secondary w-100">← Espace Client</a>
                     </div>
                 </div>
             </div>

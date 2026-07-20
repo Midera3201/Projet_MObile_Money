@@ -39,5 +39,9 @@
                 </a>
             </div>
         </div>
+
+        <div class="text-center mt-4">
+            <a href="/admin/login" class="btn btn-outline-secondary">← Espace Administration</a>
+        </div>
     </div>
 </div>
