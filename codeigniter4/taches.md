@@ -13,10 +13,11 @@
 
    ### Module Operateur (Binome 2)
  #	Tache	Description
-    8	Configuration des prefixes/CRUD des prefixes valides (033, 037, ...)
-    9	Gestion des types doperations/CRUD des types (Depot, Retrait, Transfert)
-    10	Gestion des baremes de frais/CRUD des frais par tranche de montant
-    11	Situation des gains/Affichage des frais generes par les retraits et transferts
-    12	Situation des comptes clients/Liste des clients avec leur solde
-    13	Interface operateur/Realisation des vues HTML CSS Bootstrap du module operateur
-    14	Tests et integration/Verification du fonctionnement global du module operateur
+    08 Creation du fichier base.sql
+    09	Configuration des prefixes/CRUD des prefixes valides (033, 037, ...)
+    10	Gestion des types doperations/CRUD des types (Depot, Retrait, Transfert)
+    11	Gestion des baremes de frais/CRUD des frais par tranche de montant
+    12	Situation des gains/Affichage des frais generes par les retraits et transferts
+    13	Situation des comptes clients/Liste des clients avec leur solde
+    14	Interface operateur/Realisation des vues HTML CSS Bootstrap du module operateur
+    15	Tests et integration/Verification du fonctionnement global du module operateur
