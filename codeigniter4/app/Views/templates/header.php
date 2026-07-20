@@ -17,7 +17,7 @@
             --gray: #64748B;
             --text: #1E293B;
             --text-light: #64748B;
-            --bg: #F8FAFC;
+            --bg: #F4FCF0;
             --white: #FFFFFF;
             --border: #E2E8F0;
             --radius: 10px;
@@ -65,13 +65,13 @@
             border: 1px solid var(--border);
             border-radius: var(--radius);
             padding: 24px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+            box-shadow: 0px 2px 8px rgba(15, 23, 42, 0.05);
         }
         .card-custom {
             background: var(--white);
             border: 1px solid var(--border);
             border-radius: var(--radius);
-            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+            box-shadow: 0px 2px 8px rgba(15, 23, 42, 0.05);
         }
         .card-custom .card-header-custom {
             padding: 16px 24px;
@@ -98,7 +98,7 @@
             transition: all 0.15s;
             cursor: pointer;
         }
-        .btn-custom:hover { background: var(--bg); box-shadow: 0 1px 3px rgba(0,0,0,0.06); color: var(--text); }
+        .btn-custom:hover { background: var(--bg);             box-shadow: 0px 2px 8px rgba(15, 23, 42, 0.06); color: var(--text); }
         .btn-custom.green { color: var(--primary); border-color: #bbf7d0; }
         .btn-custom.green:hover { background: var(--primary-light); }
         .btn-custom.blue { color: var(--blue); border-color: #bfdbfe; }
