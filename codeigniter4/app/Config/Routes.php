@@ -3,8 +3,9 @@
 use CodeIgniter\Router\RouteCollection;
 
 /**
- * @var RouteCollection 
+ * @var RouteCollection $routes
  */
+$routes->get('/', 'ClientController::login');
 $routes->get('/login', 'ClientController::login');
 $routes->post('/login', 'ClientController::login');
 $routes->get('/logout', 'ClientController::logout');
