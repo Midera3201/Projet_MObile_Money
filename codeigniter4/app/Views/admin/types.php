@@ -1,46 +1,70 @@
+$pageTitle = 'Types d\'opérations';
 <?= view("admin/templates/header") ?>
-<div class="container-fluid">
-    <h2 class="mb-4">Types d'opérations</h2>
-    <?php if (session()->getFlashdata("success")): ?>
-        <div class="alert alert-success"><?= session()->getFlashdata("success") ?></div>
-    <?php endif; ?>
-    <?php if (session()->getFlashdata("error")): ?>
-        <div class="alert alert-danger"><?= session()->getFlashdata("error") ?></div>
-    <?php endif; ?>
-    <div class="card shadow mb-4">
-        <div class="card-body">
-            <form method="post" action="/admin/types/create" class="row g-2">
-                <div class="col-auto">
-                    <input type="text" class="form-control" name="code" placeholder="code" required>
-                </div>
-                <div class="col-auto">
-                    <input type="text" class="form-control" name="libelle" placeholder="Libellé" required>
-                </div>
-                <div class="col-auto">
-                    <button type="submit" class="btn btn-primary">Ajouter</button>
-                </div>
-            </form>
-        </div>
+
+<?php if (session()->getFlashdata("success")): ?>
+    <div class="alert-custom success"><i class="bi bi-check-circle"></i> <?= session()->getFlashdata("success") ?></div>
+<?php endif; ?>
+<?php if (session()->getFlashdata("error")): ?>
+    <div class="alert-custom error"><i class="bi bi-exclamation-circle"></i> <?= session()->getFlashdata("error") ?></div>
+<?php endif; ?>
+
+<div class="card-custom mb-4">
+    <div class="card-header-custom">
+        <h6>Ajouter un type d'opération</h6>
     </div>
-    <div class="card shadow">
-        <div class="card-body">
-            <table class="table table-striped">
-                <thead>
-                    <tr><th>Code</th><th>Libellé</th><th>Actions</th></tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($types as $t): ?>
-                        <tr>
-                            <td><?= $t["code"] ?></td>
-                            <td><?= $t["libelle"] ?></td>
-                            <td>
-                                <a href="/admin/types/delete/<?= $t["id"] ?>" class="btn btn-sm btn-danger" onclick="return confirm('Supprimer ?')">Supprimer</a>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-        </div>
+    <div class="card-body-custom">
+        <form method="post" action="/admin/types/create" class="form-custom">
+            <div class="row g-3 align-items-end">
+                <div class="col-md-3">
+                    <label class="form-label">Code</label>
+                    <input type="text" class="form-control" name="code" placeholder="depot" required>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">Libellé</label>
+                    <input type="text" class="form-control" name="libelle" placeholder="Dépôt" required>
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn-custom green"><i class="bi bi-plus-lg"></i> Ajouter</button>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
+
+<div class="card-custom">
+    <div class="card-header-custom">
+        <h6>Liste des types</h6>
+        <span class="badge-custom inactive"><?= count($types) ?> type(s)</span>
+    </div>
+    <div class="card-body-custom p-0">
+        <table class="table-custom">
+            <thead>
+                <tr>
+                    <th>Code</th>
+                    <th>Libellé</th>
+                    <th style="width:150px;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($types as $t): ?>
+                    <tr>
+                        <td><strong><?= htmlspecialchars($t["code"]) ?></strong></td>
+                        <td><?= htmlspecialchars($t["libelle"]) ?></td>
+                        <td>
+                            <a href="/admin/types/delete/<?= $t["id"] ?>" class="btn-custom red" onclick="return confirm('Supprimer ce type ?')">
+                                <i class="bi bi-trash3"></i> Supprimer
+                            </a>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+                <?php if (empty($types)): ?>
+                    <tr>
+                        <td colspan="3" class="text-center py-4" style="color:var(--text-light);">Aucun type enregistré</td>
+                    </tr>
+                <?php endif; ?>
+            </tbody>
+        </table>
+    </div>
+</div>
+
 <?= view("admin/templates/footer") ?>

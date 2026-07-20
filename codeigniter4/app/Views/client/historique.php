@@ -1,67 +1,49 @@
-<div class="row">
-    <div class="col-md-10 mx-auto">
-        <h3 class="mb-4">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5-3.5a.5.5 0 0 1 .5.5V8h2.5a.5.5 0 0 1 0 1H8.5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5z"/></svg>
-            Historique des transactions
-        </h3>
-
-        <?php if (empty($transactions)): ?>
-            <div class="alert alert-info text-center">Aucune transaction pour le moment.</div>
-        <?php else: ?>
-            <div class="table-responsive">
-                <table class="table table-striped table-hover align-middle">
-                    <thead class="table-primary">
-                        <tr>
-                            <th>Date</th>
-                            <th>Type</th>
-                            <th>Montant</th>
-                            <th>Frais</th>
-                            <th>Total</th>
-                            <th>Destinataire</th>
-                            <th>Batch</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        $prevBatch = null;
-                        $batchColors = ["table-secondary", "table-light"];
-                        $bi = 0;
-                        ?>
-                        <?php foreach ($transactions as $t): ?>
-                            <?php
-                            $batchHere = $t["batch_id"] ?? null;
-                            if ($batchHere && $batchHere !== $prevBatch) {
-                                $bi++;
-                            }
-                            $rowClass = $batchHere ? $batchColors[$bi % 2] : "";
-                            $prevBatch = $batchHere;
-                            ?>
-                            <tr class="<?= $rowClass ?>">
-                                <td><?= date("d/m/Y H:i", strtotime($t["date_creation"])) ?></td>
-                                <td>
-                                    <?php if ($t["type_operation"] === "depot"): ?>
-                                        <span class="badge bg-success">Dépôt</span>
-                                    <?php elseif ($t["type_operation"] === "retrait"): ?>
-                                        <span class="badge bg-warning text-dark">Retrait</span>
-                                    <?php else: ?>
-                                        <span class="badge bg-info text-dark">Transfert</span>
-                                    <?php endif; ?>
-                                </td>
-                                <td class="fw-bold"><?= number_format($t["montant"], 0, ",", " ") ?></td>
-                                <td><?= $t["frais"] > 0 ? number_format($t["frais"], 0, ",", " ") : "-" ?></td>
-                                <td><?= number_format($t["montant_total"], 0, ",", " ") ?></td>
-                                <td><?= $t["destinataire"] ?: "-" ?></td>
-                                <td><?= $batchHere ? "<span class='badge bg-secondary'>Groupe</span>" : "-" ?></td>
-                            </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
-            </div>
-            <div class="text-muted small">Les lignes d'une même couleur appartiennent à un envoi multiple.</div>
-        <?php endif; ?>
-
-        <div class="text-center mt-3">
-            <a href="/client/dashboard" class="btn btn-outline-primary">Retour au dashboard</a>
+<?php if (empty($transactions)): ?>
+    <div class="card-custom">
+        <div class="card-body-custom text-center py-5" style="color:var(--text-light);">
+            <i class="bi bi-inbox" style="font-size:32px;display:block;margin-bottom:8px;"></i>
+            Aucune transaction pour le moment.
         </div>
     </div>
+<?php else: ?>
+    <div class="card-custom">
+        <div class="card-body-custom p-0">
+            <table class="table-custom">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Type</th>
+                        <th style="text-align:right;">Montant</th>
+                        <th style="text-align:right;">Frais</th>
+                        <th style="text-align:right;">Total</th>
+                        <th>Destinataire</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($transactions as $t): ?>
+                        <tr>
+                            <td style="color:var(--text-light);font-size:13px;"><?= date("d/m/Y H:i", strtotime($t["date_creation"])) ?></td>
+                            <td>
+                                <?php if ($t["type_operation"] === "depot"): ?>
+                                    <span class="badge-custom depot">Dépôt</span>
+                                <?php elseif ($t["type_operation"] === "retrait"): ?>
+                                    <span class="badge-custom retrait">Retrait</span>
+                                <?php else: ?>
+                                    <span class="badge-custom transfert">Transfert</span>
+                                <?php endif; ?>
+                            </td>
+                            <td style="text-align:right;font-weight:600;"><?= number_format($t["montant"], 0, ",", " ") ?> Ar</td>
+                            <td style="text-align:right;color:var(--text-light);"><?= $t["frais"] > 0 ? number_format($t["frais"], 0, ",", " ") . ' Ar' : '-' ?></td>
+                            <td style="text-align:right;"><?= number_format($t["montant_total"], 0, ",", " ") ?> Ar</td>
+                            <td style="font-size:13px;"><?= $t["destinataire"] ?: '-' ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+<?php endif; ?>
+
+<div class="mt-3">
+    <a href="/client/dashboard" class="btn-custom"><i class="bi bi-arrow-left"></i> Retour</a>
 </div>
