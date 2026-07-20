@@ -1,0 +1,23 @@
+# Fichiers temporaires CodeIgniter
+codeigniter4/writable/cache/*
+!codeigniter4/writable/cache/index.html
+codeigniter4/writable/logs/*
+!codeigniter4/writable/logs/index.html
+codeigniter4/writable/session/*
+!codeigniter4/writable/session/index.html
+codeigniter4/writable/debugbar/*
+!codeigniter4/writable/debugbar/index.html
+codeigniter4/writable/uploads/*
+!codeigniter4/writable/uploads/index.html
+codeigniter4/writable/*.db
+codeigniter4/writable/*.sqlite
+
+# Fichier .env (config locale)
+codeigniter4/.env
+
+# Vendor Composer
+codeigniter4/vendor/
+
+# Fichiers OS
+Thumbs.db
+.DS_Store
