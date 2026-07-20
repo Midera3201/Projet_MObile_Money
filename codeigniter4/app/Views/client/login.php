@@ -4,13 +4,6 @@
             <div class="card-body p-4">
                 <h3 class="text-center mb-4">Connexion</h3>
 
-                <?php if (session()->getFlashdata('error')): ?>
-                    <div class="alert alert-danger"><?= session()->getFlashdata('error') ?></div>
-                <?php endif; ?>
-                <?php if (session()->getFlashdata('success')): ?>
-                    <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
-                <?php endif; ?>
-
                         <div class="form-text">Entrez votre numéro (033 ou 037).</div>
                     </div>
                     <button type="submit" class="btn btn-primary btn-lg w-100">Se connecter</button>

@@ -4,7 +4,6 @@ use CodeIgniter\Router\RouteCollection;
 
 /**
  * @var RouteCollection $routes
- */
 
 $routes->get('/login', 'ClientController::login');
 $routes->post('/login', 'ClientController::login');
