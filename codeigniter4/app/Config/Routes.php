@@ -5,10 +5,8 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
-// Page d'accueil -> redirige vers login admin
-$routes->get('/', function () {
-    return redirect()->to('/admin/login');
-});
+// Page d'accueil
+$routes->get('/', 'HomeController::index');
 
 // Login / Logout Admin
 $routes->get('/admin/login', 'Admin\AuthController::showLogin');

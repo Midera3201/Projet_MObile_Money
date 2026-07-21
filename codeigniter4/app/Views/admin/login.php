@@ -45,7 +45,7 @@
             </div>
             <button type="submit" class="btn-login w-100 mb-3">Se connecter</button>
         </form>
-        <a href="/login" class="btn-link-alt w-100"><i class="bi bi-arrow-left"></i> Espace Client</a>
+        <a href="/" class="btn-link-alt w-100"><i class="bi bi-arrow-left"></i> Retour a l'accueil</a>
     </div>
 </body>
 </html>
