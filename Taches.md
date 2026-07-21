@@ -41,3 +41,13 @@
 [ok] Situation des montants à envoyer : Afficher les montants à reverser à chaque opérateur externe.
 [ok] Mise à jour de l'interface opérateur : Adapter les pages Bootstrap aux nouvelles fonctionnalités.
 [ok] Tests et intégration : Vérification du bon fonctionnement des nouvelles fonctionnalités opérateur.
+
+## Corrections et améliorations - V2
+
+#### Module Opérateur (Binôme 2 - Andhy)
+
+| # | Tâche | Description | Statut |
+|---|-------|-------------|--------|
+| 14 | Création du fichier base.sql complet | Script SQL exhaustif avec toutes les tables, vues et données initiales à la racine du projet | Terminé |
+| 15 | Nettoyage des fichiers résidus | Suppression de Home.php, ProduitsController.php, ProduitsModel.php, Produits.php et routes inutiles | Terminé |
+| 16 | Page d'accueil | Création d'une page d'accueil avec sélection entre espace client et espace opérateur | Terminé |
