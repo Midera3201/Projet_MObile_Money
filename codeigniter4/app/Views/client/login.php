@@ -47,7 +47,7 @@
             </div>
             <button type="submit" class="btn-login w-100 mb-3">Se connecter</button>
         </form>
-        <a href="/admin/login" class="btn-link-alt w-100"><i class="bi bi-shield-lock"></i> Espace Administration</a>
+        <a href="/" class="btn-link-alt w-100"><i class="bi bi-arrow-left"></i> Retour a l'accueil</a>
     </div>
 </body>
 </html>
