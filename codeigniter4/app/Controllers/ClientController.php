@@ -16,9 +16,19 @@ class ClientController extends BaseController
         $this->transactionModel = new TransactionModel();
     }
 
-    private function calculerFrais($typeOperation, $montant)
+    private function calculerFrais($typeOperation, $montant, $destinataire = null)
     {
         $db = \Config\Database::connect();
+
+        if ($typeOperation === "transfert" && $destinataire && $this->currentUser) {
+            $prefixeSource = substr($this->currentUser["telephone"], 0, 3);
+            $prefixeDest = substr($destinataire, 0, 3);
+            $promo = $db->query("SELECT frais_fixe_promo, frais_pourcentage_promo FROM promotions WHERE id_type_operation = (SELECT id FROM types_operations WHERE code = ?) AND prefixe_source = ? AND prefixe_dest = ? AND statut = 1 AND DATE('now') BETWEEN date_debut AND date_fin AND ? BETWEEN montant_min AND montant_max", [$typeOperation, $prefixeSource, $prefixeDest, $montant])->getRow();
+            if ($promo) {
+                return $promo->frais_fixe_promo + ($montant * $promo->frais_pourcentage_promo / 100);
+            }
+        }
+
         $bareme = $db->query("SELECT frais_fixe, frais_pourcentage FROM baremes b JOIN types_operations t ON b.id_type_operation = t.id WHERE t.code = ? AND ? BETWEEN b.montant_min AND b.montant_max", [$typeOperation, $montant])->getRow();
         if (!$bareme) return 0;
         return $bareme->frais_fixe + ($montant * $bareme->frais_pourcentage / 100);
@@ -147,9 +157,9 @@ class ClientController extends BaseController
             if (!$destClient) continue;
 
             $montantDest = $montantPart + ($i === $nbDestinataires - 1 ? $reste : 0);
-            $fraisDest = $this->calculerFrais("transfert", $montantDest);
+            $fraisDest = $this->calculerFrais("transfert", $montantDest, $dest);
             $fraisRetraitDest = 0;
-            if ($inclureFrais) $fraisRetraitDest = $this->calculerFrais("retrait", $montantDest);
+            if ($inclureFrais) $fraisRetraitDest = $this->calculerFrais("retrait", $montantDest, $dest);
             $totalFraisDest = $fraisDest + $fraisRetraitDest;
             $totalDest = $montantDest + $totalFraisDest;
 

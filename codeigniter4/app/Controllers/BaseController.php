@@ -38,6 +38,10 @@ class BaseController extends Controller
             $db->query("INSERT INTO baremes (id_type_operation, montant_min, montant_max, frais_fixe, frais_pourcentage) VALUES (2, 0, 1000, 50, 0), (2, 1001, 5000, 100, 1), (2, 5001, 20000, 200, 2), (2, 20001, 100000, 500, 3)");
             $db->query("INSERT INTO baremes (id_type_operation, montant_min, montant_max, frais_fixe, frais_pourcentage) VALUES (3, 0, 1000, 25, 0), (3, 1001, 5000, 50, 0.5), (3, 5001, 20000, 100, 1), (3, 20001, 100000, 200, 1.5)");
         }
+        if (!in_array("promotions", $tables)) {
+            $db->query("CREATE TABLE promotions (id INTEGER PRIMARY KEY AUTOINCREMENT, code TEXT NOT NULL UNIQUE, description TEXT DEFAULT '', id_type_operation INTEGER NOT NULL, prefixe_source TEXT NOT NULL, prefixe_dest TEXT NOT NULL, frais_fixe_promo REAL DEFAULT 0, frais_pourcentage_promo REAL DEFAULT 0, montant_min REAL DEFAULT 0, montant_max REAL DEFAULT 999999999, date_debut TEXT NOT NULL, date_fin TEXT NOT NULL, statut INTEGER DEFAULT 1, FOREIGN KEY (id_type_operation) REFERENCES types_operations(id))");
+            $db->query("INSERT INTO promotions (code, description, id_type_operation, prefixe_source, prefixe_dest, frais_fixe_promo, frais_pourcentage_promo, montant_min, montant_max, date_debut, date_fin) VALUES ('PROMO_033', 'Frais offerts transfert 033->033', 3, '033', '033', 0, 0, 0, 50000, '2026-07-01', '2026-12-31')");
+        }
         if (!in_array("clients", $tables)) {
             $db->query("CREATE TABLE clients (id INTEGER PRIMARY KEY AUTOINCREMENT, telephone TEXT NOT NULL UNIQUE, nom TEXT DEFAULT '', solde REAL DEFAULT 0, date_creation DATETIME DEFAULT CURRENT_TIMESTAMP)");
         }

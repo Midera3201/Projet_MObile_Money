@@ -45,6 +45,12 @@ $routes->group('admin', ['filter' => 'adminAuth'], function ($routes) {
     $routes->get('commissions', 'Admin\CommissionController::index');
     $routes->post('commissions/update/(:num)', 'Admin\CommissionController::update/$1');
 
+    // Promotions
+    $routes->get('promotions', 'Admin\PromotionController::index');
+    $routes->post('promotions/create', 'Admin\PromotionController::create');
+    $routes->get('promotions/toggle/(:num)', 'Admin\PromotionController::toggle/$1');
+    $routes->get('promotions/delete/(:num)', 'Admin\PromotionController::delete/$1');
+
     // Simulateur de transfert
     $routes->get('simulateur', 'Admin\TransferController::simulateur');
     $routes->post('simulateur', 'Admin\TransferController::simulateur');

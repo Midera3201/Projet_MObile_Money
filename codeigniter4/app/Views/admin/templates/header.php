@@ -380,6 +380,9 @@
             <a class="nav-link <?= uri_string() === 'admin/baremes' ? 'active' : '' ?>" href="/admin/baremes">
                 <i class="bi bi-cash-stack"></i> Barèmes de frais
             </a>
+            <a class="nav-link <?= uri_string() === 'admin/promotions' ? 'active' : '' ?>" href="/admin/promotions">
+                <i class="bi bi-gift"></i> Promotions
+            </a>
 
             <div class="nav-section">Opérateurs</div>
             <a class="nav-link <?= uri_string() === 'admin/operateurs' ? 'active' : '' ?>" href="/admin/operateurs">
