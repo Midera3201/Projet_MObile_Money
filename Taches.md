@@ -50,3 +50,13 @@
 11-Situation des montants a envoyer	Afficher les montants a reverser a chaque operateur externe	✓ Termine
 12-Mise a jour de linterface operateur	Adapter les pages Bootstrap aux nouvelles fonctionnalites	✓ Termine
 13-Tests et integration	Verification du bon fonctionnement des nouvelles fonctionnalites operateur	✓ Termine
+
+## Corrections et ameliorations - V2
+
+### Module Operateur (Binome 2 - Andhy)
+
+| # | Tache | Description | Statut |
+|---|-------|-------------|--------|
+| 14 | Creation du fichier base.sql complet | Script SQL exhaustif avec toutes les tables, vues et donnees initiales a la racine du projet | Termine |
+| 15 | Nettoyage des fichiers residus | Suppression de Home.php, ProduitsController.php, ProduitsModel.php, Produits.php et routes inutiles | Termine |
+| 16 | Page d'accueil | Creation d'une page d'accueil avec selection entre espace client et espace operateur | Termine |
