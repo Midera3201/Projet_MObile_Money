@@ -43,7 +43,16 @@ class BaseController extends Controller
             $db->query("INSERT INTO promotions (code, description, id_type_operation, prefixe_source, prefixe_dest, frais_fixe_promo, frais_pourcentage_promo, montant_min, montant_max, date_debut, date_fin) VALUES ('PROMO_033', 'Frais offerts transfert 033->033', 3, '033', '033', 0, 0, 0, 50000, '2026-07-01', '2026-12-31')");
         }
         if (!in_array("clients", $tables)) {
-            $db->query("CREATE TABLE clients (id INTEGER PRIMARY KEY AUTOINCREMENT, telephone TEXT NOT NULL UNIQUE, nom TEXT DEFAULT '', solde REAL DEFAULT 0, date_creation DATETIME DEFAULT CURRENT_TIMESTAMP)");
+            $db->query("CREATE TABLE clients (id INTEGER PRIMARY KEY AUTOINCREMENT, telephone TEXT NOT NULL UNIQUE, nom TEXT DEFAULT '', solde REAL DEFAULT 0, solde_epargne REAL DEFAULT 0, date_creation DATETIME DEFAULT CURRENT_TIMESTAMP)");
+        } else {
+            $cols = $db->getFieldNames("clients");
+            if (!in_array("solde_epargne", $cols)) {
+                $db->query("ALTER TABLE clients ADD COLUMN solde_epargne REAL DEFAULT 0");
+            }
+        }
+        if (!in_array("parametres_epargne", $tables)) {
+            $db->query("CREATE TABLE parametres_epargne (id INTEGER PRIMARY KEY AUTOINCREMENT, taux_interet REAL DEFAULT 5, duree_blocage_jours INTEGER DEFAULT 30, date_creation DATETIME DEFAULT CURRENT_TIMESTAMP)");
+            $db->query("INSERT INTO parametres_epargne (taux_interet, duree_blocage_jours) VALUES (5, 30)");
         }
         if (!in_array("transactions", $tables)) {
             $db->query("CREATE TABLE transactions (id INTEGER PRIMARY KEY AUTOINCREMENT, id_client INTEGER NOT NULL, type_operation TEXT NOT NULL, montant REAL NOT NULL, frais REAL DEFAULT 0, montant_total REAL DEFAULT 0, destinataire TEXT DEFAULT NULL, batch_id TEXT DEFAULT NULL, date_creation DATETIME DEFAULT CURRENT_TIMESTAMP, FOREIGN KEY (id_client) REFERENCES clients(id))");

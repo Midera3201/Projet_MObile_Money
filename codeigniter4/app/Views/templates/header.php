@@ -134,6 +134,7 @@
     <a class="brand" href="/client/dashboard">M-Money</a>
     <div class="nav-actions">
         <a href="/client/dashboard" class="active"><i class="bi bi-grid-1x2 me-1"></i> Dashboard</a>
+        <a href="/client/epargne"><i class="bi bi-piggy-bank me-1"></i> Épargne</a>
         <a href="/client/historique"><i class="bi bi-clock-history me-1"></i> Historique</a>
         <a href="/logout"><i class="bi bi-box-arrow-left me-1"></i> Déconnexion</a>
     </div>

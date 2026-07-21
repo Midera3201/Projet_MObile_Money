@@ -70,6 +70,9 @@ $routes->get('/client/retrait', 'ClientController::retrait');
 $routes->post('/client/retrait', 'ClientController::storeRetrait');
 $routes->get('/client/transfert', 'ClientController::transfert');
 $routes->post('/client/transfert', 'ClientController::storeTransfert');
+$routes->get('/client/epargne', 'ClientController::epargne');
+$routes->post('/client/epargne/depot', 'ClientController::storeEpargneDepot');
+$routes->post('/client/epargne/retrait', 'ClientController::storeEpargneRetrait');
 $routes->get('/client/historique', 'ClientController::historique');
 
 

@@ -178,6 +178,46 @@ class ClientController extends BaseController
         return redirect()->to("/client/dashboard")->with("success", $msg . ".");
     }
 
+    public function epargne()
+    {
+        if (!$this->isLoggedIn()) return redirect()->to("/login");
+        $db = \Config\Database::connect();
+        $params = $db->query("SELECT * FROM parametres_epargne ORDER BY id DESC LIMIT 1")->getRow();
+        return $this->render("client/epargne", ["params" => $params]);
+    }
+
+    public function storeEpargneDepot()
+    {
+        if (!$this->isLoggedIn()) return redirect()->to("/login");
+        $montant = (float) $this->request->getPost("montant");
+        if ($montant <= 0) return redirect()->back()->with("error", "Montant invalide.");
+        $client = $this->clientModel->find($this->currentUser["id"]);
+        if ($client["solde"] < $montant) return redirect()->back()->with("error", "Solde insuffisant.");
+        $db = \Config\Database::connect();
+        $db->transStart();
+        $this->clientModel->update($client["id"], ["solde" => $client["solde"] - $montant, "solde_epargne" => $client["solde_epargne"] + $montant]);
+        $this->transactionModel->insert(["id_client" => $client["id"], "type_operation" => "epargne_depot", "montant" => $montant, "frais" => 0, "montant_total" => $montant, "destinataire" => "Épargne"]);
+        $db->transComplete();
+        if ($db->transStatus() === false) return redirect()->back()->with("error", "Erreur lors du dépôt épargne.");
+        return redirect()->to("/client/epargne")->with("success", number_format($montant, 0, ",", " ") . " Ar versé sur votre épargne.");
+    }
+
+    public function storeEpargneRetrait()
+    {
+        if (!$this->isLoggedIn()) return redirect()->to("/login");
+        $montant = (float) $this->request->getPost("montant");
+        if ($montant <= 0) return redirect()->back()->with("error", "Montant invalide.");
+        $client = $this->clientModel->find($this->currentUser["id"]);
+        if ($client["solde_epargne"] < $montant) return redirect()->back()->with("error", "Solde épargne insuffisant.");
+        $db = \Config\Database::connect();
+        $db->transStart();
+        $this->clientModel->update($client["id"], ["solde" => $client["solde"] + $montant, "solde_epargne" => $client["solde_epargne"] - $montant]);
+        $this->transactionModel->insert(["id_client" => $client["id"], "type_operation" => "epargne_retrait", "montant" => $montant, "frais" => 0, "montant_total" => $montant, "destinataire" => "Épargne"]);
+        $db->transComplete();
+        if ($db->transStatus() === false) return redirect()->back()->with("error", "Erreur lors du retrait épargne.");
+        return redirect()->to("/client/epargne")->with("success", number_format($montant, 0, ",", " ") . " Ar retiré de votre épargne.");
+    }
+
     public function historique()
     {
         if (!$this->isLoggedIn()) return redirect()->to("/login");

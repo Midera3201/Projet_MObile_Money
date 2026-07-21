@@ -13,6 +13,19 @@
     <div style="font-size:13px;color:var(--text-light);margin-top:4px;"><?= htmlspecialchars($client["telephone"]) ?></div>
 </div>
 
+<div class="stat-card mb-4 text-center" style="background:#fffbeb;border-color:#fde68a;">
+    <div style="display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;">
+        <div>
+            <div style="font-size:12px;color:var(--text-light);text-transform:uppercase;letter-spacing:0.3px;font-weight:500;">Épargne</div>
+            <div style="font-size:24px;font-weight:700;color:#F59E0B;">
+                <?= number_format($client["solde_epargne"] ?? 0, 0, ",", " ") ?> <span style="font-size:14px;color:var(--text-light);font-weight:500;">Ar</span>
+            </div>
+        </div>
+        <div style="width:1px;height:40px;background:var(--border);"></div>
+        <a href="/client/epargne" class="btn-custom" style="color:#F59E0B;border-color:#fde68a;font-size:12px;height:32px;"><i class="bi bi-piggy-bank"></i> Gérer</a>
+    </div>
+</div>
+
 <div class="row g-3 mb-4">
     <div class="col-md-4">
         <a href="/client/depot" class="card-custom d-block text-decoration-none" style="cursor:pointer;">
